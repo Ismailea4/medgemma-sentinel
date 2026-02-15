@@ -1,5 +1,7 @@
 # MedGemma Sentinel: The Autonomous Edge-AI Guardian 🏥🛡️
 
+### adds-on : the project schema
+
 **MedGemma Sentinel** is a multimodal AI agent designed for offline rural clinics (e.g., the Atlas Mountains) to bridge the "Vigilance Gap" in healthcare.  It operates on low-cost hardware and switches between two specialized roles to support medical staff 24/7.
 
 ## 🌟 Key Features
