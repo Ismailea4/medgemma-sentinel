@@ -1,0 +1,212 @@
+{
+  "total_records": 38,
+  "populations": {
+    "adolescent": {
+      "count": 24,
+      "records": [
+        {
+          "subject_id": 903,
+          "data_points": 118354,
+          "duration_hours": 1972.5666666666666
+        },
+        {
+          "subject_id": 907,
+          "data_points": 108150,
+          "duration_hours": 1802.5
+        },
+        {
+          "subject_id": 911,
+          "data_points": 122065,
+          "duration_hours": 2034.4166666666667
+        },
+        {
+          "subject_id": 912,
+          "data_points": 118311,
+          "duration_hours": 1971.85
+        },
+        {
+          "subject_id": 914,
+          "data_points": 109735,
+          "duration_hours": 1828.9166666666667
+        },
+        {
+          "subject_id": 918,
+          "data_points": 119580,
+          "duration_hours": 1993.0
+        },
+        {
+          "subject_id": 919,
+          "data_points": 111615,
+          "duration_hours": 1860.25
+        },
+        {
+          "subject_id": 926,
+          "data_points": 123220,
+          "duration_hours": 2053.6666666666665
+        },
+        {
+          "subject_id": 929,
+          "data_points": 121288,
+          "duration_hours": 2021.4666666666667
+        },
+        {
+          "subject_id": 936,
+          "data_points": 113827,
+          "duration_hours": 1897.1166666666666
+        },
+        {
+          "subject_id": 941,
+          "data_points": 122008,
+          "duration_hours": 2033.4666666666667
+        },
+        {
+          "subject_id": 943,
+          "data_points": 116360,
+          "duration_hours": 1939.3333333333333
+        },
+        {
+          "subject_id": 944,
+          "data_points": 113665,
+          "duration_hours": 1894.4166666666667
+        },
+        {
+          "subject_id": 959,
+          "data_points": 116882,
+          "duration_hours": 1948.0333333333333
+        },
+        {
+          "subject_id": 962,
+          "data_points": 123846,
+          "duration_hours": 2064.1
+        },
+        {
+          "subject_id": 964,
+          "data_points": 102367,
+          "duration_hours": 1706.1166666666666
+        },
+        {
+          "subject_id": 967,
+          "data_points": 114783,
+          "duration_hours": 1913.05
+        },
+        {
+          "subject_id": 973,
+          "data_points": 124691,
+          "duration_hours": 2078.1833333333334
+        },
+        {
+          "subject_id": 974,
+          "data_points": 113884,
+          "duration_hours": 1898.0666666666666
+        },
+        {
+          "subject_id": 976,
+          "data_points": 109064,
+          "duration_hours": 1817.7333333333333
+        },
+        {
+          "subject_id": 981,
+          "data_points": 112110,
+          "duration_hours": 1868.5
+        },
+        {
+          "subject_id": 987,
+          "data_points": 112867,
+          "duration_hours": 1881.1166666666666
+        },
+        {
+          "subject_id": 990,
+          "data_points": 111656,
+          "duration_hours": 1860.9333333333334
+        },
+        {
+          "subject_id": 995,
+          "data_points": 111479,
+          "duration_hours": 1857.9833333333333
+        }
+      ]
+    },
+    "adult": {
+      "count": 7,
+      "records": [
+        {
+          "patient_id": "adult_3190202n",
+          "data_points": 2611,
+          "duration_sec": 2644.0
+        },
+        {
+          "patient_id": "adult_3297027n",
+          "data_points": 45958,
+          "duration_sec": 46341.0
+        },
+        {
+          "patient_id": "adult_3362386n",
+          "data_points": 2563,
+          "duration_sec": 2638.0
+        },
+        {
+          "patient_id": "adult_3570073n",
+          "data_points": 2967,
+          "duration_sec": 2969.0
+        },
+        {
+          "patient_id": "adult_3618048n",
+          "data_points": 1520,
+          "duration_sec": 1519.0
+        },
+        {
+          "patient_id": "adult_3722620n",
+          "data_points": 4308,
+          "duration_sec": 4308.0
+        },
+        {
+          "patient_id": "adult_3924317n",
+          "data_points": 1388,
+          "duration_sec": 1396.0
+        }
+      ]
+    },
+    "neonate": {
+      "count": 7,
+      "records": [
+        {
+          "patient_id": "neonate_3182898n",
+          "data_points": 92720,
+          "duration_sec": 93458.0
+        },
+        {
+          "patient_id": "neonate_3220897n",
+          "data_points": 38238,
+          "duration_sec": 42217.0
+        },
+        {
+          "patient_id": "neonate_3306334n",
+          "data_points": 180932,
+          "duration_sec": 181367.0
+        },
+        {
+          "patient_id": "neonate_3632888n",
+          "data_points": 96164,
+          "duration_sec": 96421.0
+        },
+        {
+          "patient_id": "neonate_3716249n",
+          "data_points": 9645,
+          "duration_sec": 9710.0
+        },
+        {
+          "patient_id": "neonate_3875566n",
+          "data_points": 127,
+          "duration_sec": 182.0
+        },
+        {
+          "patient_id": "neonate_3998381n",
+          "data_points": 106008,
+          "duration_sec": 115028.0
+        }
+      ]
+    }
+  },
+  "total_tokens": 5990,
+  "output_file": "cardiology_calibration_imatrix.txt"
+}
