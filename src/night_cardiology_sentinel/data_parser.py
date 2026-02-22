@@ -65,8 +65,8 @@ def parse_time_to_seconds(raw: str) -> Optional[float]:
         except ValueError:
             return None
         if len(numbers) == 2:
-            minutes, seconds = numbers
-            return minutes * 60 + seconds
+            hours, minutes = numbers
+            return hours * 3600 + minutes * 60
         if len(numbers) == 3:
             hours, minutes, seconds = numbers
             return hours * 3600 + minutes * 60 + seconds
