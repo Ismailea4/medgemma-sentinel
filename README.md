@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="figures/logo2.png" alt="MedGemma Sentinel Logo" width="200"/>
+  <img src="figures/logo2.png" alt="MedGemma Sentinel Logo" width="400"/>
 </div>
 
 # MedGemma Sentinel: The Autonomous Edge-AI Guardian 🏥🛡️
