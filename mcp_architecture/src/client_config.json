@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "my-mcp-medgemma": {
+      "command": "python",
+      "args": [
+        "medical_mcp_server.py"
+      ]
+    }
+  }
+}
