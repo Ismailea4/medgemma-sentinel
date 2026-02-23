@@ -105,7 +105,7 @@ NEVER make up the Observation yourself. When you output 'Action Input:', STOP wr
                     
                     # Parse the Tool Request using Regex
                     action_match = re.search(r"Action:\s*(.*?)\n", llm_output)
-                    input_match = re.search(r"Action Input:\s*(.*)", llm_output)
+                    input_match = re.search(r"Action Input:\s*(.+?)(?:\n\s*\n|\Z)", llm_output, re.DOTALL)
 
                     if action_match and input_match:
                         action_name = action_match.group(1).strip()
@@ -116,7 +116,15 @@ NEVER make up the Observation yourself. When you output 'Action Input:', STOP wr
                             print(f"  --> [MCP Client] Calling tool '{action_name}' on server (Please wait...)")
                             try:
                                 # Clean up JSON parsing (LLMs sometimes add markdown formatting)
-                                raw_input = raw_input.replace('```json', '').replace('```', '')
+                                raw_input = raw_input.replace('```json', '').replace('```', '').strip()
+                                
+                                # Extract JSON if it's wrapped in code blocks
+                                if raw_input.startswith('{'):
+                                    # Find the last closing brace
+                                    last_brace = raw_input.rfind('}')
+                                    if last_brace != -1:
+                                        raw_input = raw_input[:last_brace + 1]
+                                
                                 action_args = json.loads(raw_input)
                                 
                                 # Execute over the MCP Protocol

@@ -6,3 +6,4 @@ librosa
 numpy
 scikit-learn
 joblib
+streamlit>=1.31.0  # For MCP visualization interface

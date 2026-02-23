@@ -4,15 +4,29 @@ This exposes our audio classifier and database access to ANY MCP-compatible clie
 """
 
 import json
+from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from datetime import datetime
-
 
 # Import your audio inference tool
 try:
     from classification_sound_2 import inference
 except ImportError:
     print("Warning: 'classification_sound.py' not found. Audio tool will fail.")
+
+# Import night cardiology sentinel (local module)
+try:
+    from cardiology_sentinel import (
+        SubjectInfo, 
+        parse_vitals_lines, 
+        summarize_window, 
+        SentinelInference, 
+        build_prompt
+    )
+    SENTINEL_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: 'cardiology_sentinel' module not found. Error: {e}")
+    SENTINEL_AVAILABLE = False
 
 # Initialize the FastMCP Server
 mcp = FastMCP("NightWatchServer")
@@ -67,6 +81,68 @@ def get_current_time() -> str:
     result = current_datetime
 
     return str(result)
+
+
+@mcp.tool()
+def analyze_cardiology_sentinel(patient_id: str, vitals_text: str) -> str:
+    """
+    Analyzes patient cardiology data using the Night Cardiology Sentinel model.
+    Use this when you need to assess cardiac anomalies or heart-related conditions.
+    
+    Args:
+        patient_id: The patient's ID (e.g., "402")
+        vitals_text: Multi-line text with vitals in format:
+                     "Time: 00:00 - HR: 115, SPO2: 88, RESP: 24\\nTime: 00:01 - HR: 118, SPO2: 87"
+    
+    Returns detailed cardiac analysis with comparison, detection, and clinical interpretation.
+    """
+    if not SENTINEL_AVAILABLE:
+        return "Error: Night Cardiology Sentinel module not available."
+    
+    # Get patient info from database
+    patient_db = {
+        "101": {"code": 101, "gender": "M", "age": 45, "height": 175, "weight": 80},
+        "402": {"code": 402, "gender": "M", "age": 68, "height": 170, "weight": 85}
+    }
+    
+    patient_data = patient_db.get(patient_id)
+    if not patient_data:
+        return f"Error: Patient {patient_id} not found in database."
+    
+    # Build subject info
+    subject = SubjectInfo(
+        subject_code=patient_data["code"],
+        gender=patient_data["gender"],
+        age_years=patient_data["age"],
+        length_cm=patient_data["height"],
+        weight_kg=patient_data["weight"]
+    )
+    
+    try:
+        # Parse vitals from text
+        lines = vitals_text.split('\n')
+        rows = parse_vitals_lines(lines)
+        
+        if not rows:
+            return "Error: No valid vitals data could be parsed. Expected format: 'Time: X - HR: Y, SPO2: Z'"
+        
+        # Create a summary of the vitals window
+        window_summary = summarize_window(rows)
+        
+        # Build prompt for the sentinel model
+        prompt = build_prompt(subject, window_summary)
+        
+        # Load model and run inference
+        model_path = str(Path(__file__).parent.parent.parent / "models" / "medgemma-night-sentinel-Q4_K_M.gguf")
+        
+        sentinel = SentinelInference(model_path=model_path, n_ctx=2048)
+        result = sentinel.predict(prompt, max_tokens=256)
+        
+        return f"CARDIOLOGY SENTINEL ANALYSIS for Patient {patient_id}:\n\n{result}"
+        
+    except Exception as e:
+        return f"Error during cardiology analysis: {str(e)}"
+
 
 if __name__ == "__main__":
     # Run the FastMCP server on stdio
