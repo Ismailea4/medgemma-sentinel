@@ -78,19 +78,21 @@ class PDFReportGenerator:
         "muted": colors.HexColor("#718096")
     }
     
-    def __init__(self, output_dir: str = "./data/reports"):
+    def __init__(self, output_dir: str = "./data/reports", initialize_medgemma: bool = False):
         """
         Initialize the PDF generator.
         
         Args:
             output_dir: Directory for saving generated PDFs
+            initialize_medgemma: If True, initialize MedGemmaEngine for dynamic text generation.
+                                 Default False to avoid reloading heavy guard/model stack during PDF export.
         """
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
-        # Initialize MedGemma engine if available
+        # Lazy by default: PDF export does not require MedGemma inference.
         self.medgemma_engine = None
-        if MEDGEMMA_AVAILABLE:
+        if initialize_medgemma and MEDGEMMA_AVAILABLE:
             try:
                 self.medgemma_engine = MedGemmaEngine()
             except Exception as e:
@@ -143,18 +145,26 @@ class PDFReportGenerator:
             name='AlertCritical',
             parent=self.styles['Normal'],
             fontSize=10,
+            leading=14,
             textColor=colors.white,
             backColor=self.COLORS["danger"],
-            borderPadding=8
+            borderPadding=8,
+            spaceBefore=2,
+            spaceAfter=2,
+            alignment=TA_LEFT
         ))
         
         self.styles.add(ParagraphStyle(
             name='AlertWarning',
             parent=self.styles['Normal'],
             fontSize=10,
+            leading=13,
             textColor=colors.black,
             backColor=self.COLORS["warning"],
-            borderPadding=8
+            borderPadding=8,
+            spaceBefore=2,
+            spaceAfter=2,
+            alignment=TA_LEFT
         ))
         
         self.styles.add(ParagraphStyle(
@@ -209,6 +219,9 @@ class PDFReportGenerator:
         
         # Executive Summary
         story.extend(self._build_executive_summary(data))
+
+        # Longitudinal insights from the two most recent sessions
+        story.extend(self._build_history_evolution_section(data))
         
         # Alerts section
         story.extend(self._build_alerts_section(data))
@@ -278,6 +291,9 @@ class PDFReportGenerator:
         # Night context if available
         if data.get("night_context"):
             story.extend(self._build_night_context_section(data))
+
+        # Longitudinal insights from the two most recent sessions
+        story.extend(self._build_history_evolution_section(data))
         
         # Chief complaint
         story.extend(self._build_complaint_section(data))
@@ -491,8 +507,17 @@ class PDFReportGenerator:
             elements.append(Paragraph("Événements critiques:", self.styles['SubSection']))
             for event in critical_events:
                 alert_text = f"ALERTE - {event.get('type', 'Evenement')}: {event.get('description', '')}"
-                elements.append(Paragraph(alert_text, self.styles['AlertCritical']))
-                elements.append(Spacer(1, 5))
+                alert_box = Table([[Paragraph(alert_text, self.styles['AlertCritical'])]], colWidths=[16*cm])
+                alert_box.setStyle(TableStyle([
+                    ('BACKGROUND', (0, 0), (-1, -1), self.COLORS["danger"]),
+                    ('LEFTPADDING', (0, 0), (-1, -1), 8),
+                    ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+                    ('TOPPADDING', (0, 0), (-1, -1), 6),
+                    ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+                    ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                ]))
+                elements.append(alert_box)
+                elements.append(Spacer(1, 6))
         
         elements.append(Spacer(1, 10))
         return elements
@@ -582,6 +607,24 @@ class PDFReportGenerator:
         for rec in recommendations:
             elements.append(Paragraph(f"* {rec}", self.styles['BodyText']))
         
+        elements.append(Spacer(1, 10))
+        return elements
+
+    def _build_history_evolution_section(self, data: Dict[str, Any]) -> List:
+        """Build optional cross-session evolution insights section."""
+        elements = []
+        insights = data.get("history_evolution_insights", "")
+        if not insights:
+            return elements
+
+        elements.append(Paragraph("Evolution Inter-Cycles (2 sessions)", self.styles['SectionTitle']))
+        elements.extend(self._parse_markdown_to_elements(insights))
+
+        sources = data.get("history_sources", [])
+        if sources:
+            source_text = ", ".join(str(source) for source in sources)
+            elements.append(Paragraph(f"<b>Sources sessions:</b> {source_text}", self.styles['BodyText']))
+
         elements.append(Spacer(1, 10))
         return elements
     

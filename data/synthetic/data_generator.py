@@ -4,7 +4,7 @@ Generates realistic medical data for testing and demonstration
 """
 
 import random
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date, time
 from typing import List, Dict, Any, Optional, Tuple
 import uuid
 
@@ -99,11 +99,26 @@ class SyntheticDataGenerator:
         ("fever", "Fièvre", "high"),
         ("abnormal_breathing", "Respiration anormale", "medium"),
     ]
+
+    # Hard safety bounds for generated vitals (clinical realism guardrails).
+    CLINICAL_BOUNDS = {
+        "spo2": (70, 100),
+        "heart_rate": (30, 220),
+        "temperature": (34.0, 42.0),
+        "respiratory_rate": (6, 45),
+        "sbp": (60, 220),
+        "dbp": (30, 130),
+    }
     
     def __init__(self, seed: Optional[int] = None):
         """Initialize with optional random seed for reproducibility"""
-        if seed:
+        if seed is not None:
             random.seed(seed)
+
+    @staticmethod
+    def _clamp(value: float, low: float, high: float):
+        """Clamp a generated value to strict clinical bounds."""
+        return max(low, min(high, value))
     
     def generate_patient(
         self,
@@ -245,6 +260,16 @@ class SyntheticDataGenerator:
             rr = random.randint(12, 22)
             sbp = random.randint(100, 145)
             dbp = random.randint(60, 90)
+
+        # Enforce strict clinical bounds
+        spo2 = int(self._clamp(spo2, *self.CLINICAL_BOUNDS["spo2"]))
+        hr = int(self._clamp(hr, *self.CLINICAL_BOUNDS["heart_rate"]))
+        temp = round(float(self._clamp(temp, *self.CLINICAL_BOUNDS["temperature"])), 1)
+        rr = int(self._clamp(rr, *self.CLINICAL_BOUNDS["respiratory_rate"]))
+        sbp = int(self._clamp(sbp, *self.CLINICAL_BOUNDS["sbp"]))
+        dbp = int(self._clamp(dbp, *self.CLINICAL_BOUNDS["dbp"]))
+        if dbp >= sbp:
+            dbp = max(self.CLINICAL_BOUNDS["dbp"][0], sbp - 10)
         
         return {
             "timestamp": timestamp.isoformat(),
@@ -264,12 +289,19 @@ class SyntheticDataGenerator:
         patient: Dict[str, Any],
         duration_hours: int = 8,
         reading_interval_minutes: int = 15,
-        anomaly_probability: float = 0.1
+        anomaly_probability: float = 0.1,
+        clinical_date: Optional[date] = None,
     ) -> List[Dict[str, Any]]:
         """Generate a timeline of vitals readings for a night"""
         
         readings = []
-        start_time = datetime.now().replace(hour=22, minute=0, second=0, microsecond=0)
+        if clinical_date is None:
+            base_date = datetime.now().date()
+        elif isinstance(clinical_date, datetime):
+            base_date = clinical_date.date()
+        else:
+            base_date = clinical_date
+        start_time = datetime.combine(base_date, time(hour=22, minute=0))
         
         num_readings = (duration_hours * 60) // reading_interval_minutes
         
@@ -305,11 +337,12 @@ class SyntheticDataGenerator:
         ]
         
         event_type, confidence, extra_data = random.choice(event_types)
+        confidence = float(self._clamp(confidence + random.uniform(-0.1, 0.05), 0.0, 1.0))
         
         return {
             "timestamp": timestamp.isoformat(),
             "type": event_type,
-            "confidence": confidence + random.uniform(-0.1, 0.05),
+            "confidence": round(confidence, 3),
             **extra_data
         }
     
@@ -330,18 +363,20 @@ class SyntheticDataGenerator:
         ]
         
         event_type, confidence, extra_data = random.choice(event_types)
+        confidence = float(self._clamp(confidence + random.uniform(-0.1, 0.05), 0.0, 1.0))
         
         return {
             "timestamp": timestamp.isoformat(),
             "type": event_type,
-            "confidence": confidence + random.uniform(-0.1, 0.05),
+            "confidence": round(confidence, 3),
             **extra_data
         }
     
     def generate_night_scenario(
         self,
         patient: Dict[str, Any],
-        scenario_type: str = "moderate"
+        scenario_type: str = "moderate",
+        clinical_date: Optional[date] = None,
     ) -> Dict[str, Any]:
         """
         Generate a complete night surveillance scenario.
@@ -378,15 +413,23 @@ class SyntheticDataGenerator:
         config = configs.get(scenario_type, configs["moderate"])
         
         # Generate vitals timeline
+        if clinical_date is None:
+            base_date = datetime.now().date()
+        elif isinstance(clinical_date, datetime):
+            base_date = clinical_date.date()
+        else:
+            base_date = clinical_date
+
         vitals = self.generate_night_vitals_timeline(
             patient,
-            anomaly_probability=config["anomaly_prob"]
+            anomaly_probability=config["anomaly_prob"],
+            clinical_date=base_date,
         )
         
         # Generate audio events
         audio_events = []
         num_audio = random.randint(*config["audio_events"])
-        start_time = datetime.now().replace(hour=22, minute=0)
+        start_time = datetime.combine(base_date, time(hour=22, minute=0))
         for _ in range(num_audio):
             ts = start_time + timedelta(minutes=random.randint(0, 480))
             audio_events.append(self.generate_audio_event(ts))
@@ -402,6 +445,7 @@ class SyntheticDataGenerator:
             "patient_id": patient["patient_id"],
             "patient_name": patient["name"],
             "room": patient["room"],
+            "clinical_date": base_date.isoformat(),
             "scenario_type": scenario_type,
             "vitals_input": vitals,
             "audio_input": audio_events,
@@ -418,7 +462,8 @@ class SyntheticDataGenerator:
     def generate_consultation_scenario(
         self,
         patient: Dict[str, Any],
-        consultation_mode: str = "general"
+        consultation_mode: str = "general",
+        clinical_date: Optional[date] = None,
     ) -> Dict[str, Any]:
         """Generate a day consultation scenario"""
         
@@ -427,7 +472,19 @@ class SyntheticDataGenerator:
         symptoms = random.sample(symptoms_pool, random.randint(2, 4))
         
         # Generate vitals
-        vitals_reading = self.generate_vitals_reading(patient, scenario="normal")
+        if clinical_date is None:
+            base_date = datetime.now().date()
+        elif isinstance(clinical_date, datetime):
+            base_date = clinical_date.date()
+        else:
+            base_date = clinical_date
+
+        consultation_ts = datetime.combine(base_date, time(hour=10, minute=0))
+        vitals_reading = self.generate_vitals_reading(
+            patient,
+            timestamp=consultation_ts,
+            scenario="normal",
+        )
         
         # Physical exam
         exam = {}
@@ -461,6 +518,8 @@ class SyntheticDataGenerator:
         return {
             "patient_id": patient["patient_id"],
             "patient_name": patient["name"],
+            "clinical_date": base_date.isoformat(),
+            "consultation_timestamp": consultation_ts.isoformat(),
             "consultation_mode": consultation_mode,
             "symptoms_input": symptoms,
             "day_vitals_input": {
@@ -484,27 +543,27 @@ class SyntheticDataGenerator:
 # Convenience functions
 def generate_demo_patient() -> Dict[str, Any]:
     """Generate a demo patient with realistic data"""
-    gen = SyntheticDataGenerator(seed=42)
+    gen = SyntheticDataGenerator()
     return gen.generate_patient(patient_id="DEMO001")
 
 
 def generate_demo_night_scenario() -> Dict[str, Any]:
     """Generate a complete demo night scenario"""
-    gen = SyntheticDataGenerator(seed=42)
+    gen = SyntheticDataGenerator()
     patient = gen.generate_patient(patient_id="DEMO001")
     return gen.generate_night_scenario(patient, scenario_type="moderate")
 
 
 def generate_demo_consultation() -> Dict[str, Any]:
     """Generate a demo consultation scenario"""
-    gen = SyntheticDataGenerator(seed=42)
+    gen = SyntheticDataGenerator()
     patient = gen.generate_patient(patient_id="DEMO001")
     return gen.generate_consultation_scenario(patient, consultation_mode="cardio")
 
 
 if __name__ == "__main__":
     # Demo
-    gen = SyntheticDataGenerator(seed=42)
+    gen = SyntheticDataGenerator()
     
     print("=== Generating Demo Patient ===")
     patient = gen.generate_patient()

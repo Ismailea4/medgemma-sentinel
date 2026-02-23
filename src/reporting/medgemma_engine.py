@@ -7,6 +7,8 @@ Supports 4 modes (in priority order):
 2. llama-cpp-python direct loading (if llama_cpp package installed)
 3. HuggingFace Inference API (remote, needs HF_TOKEN)
 4. Simulation fallback (for dev/testing)
+
+Guardrails: NeMo Guardrails + Llama Guard 3 integration for input/output safety.
 """
 
 import os
@@ -70,6 +72,11 @@ class MedGemmaEngine:
         self.is_loaded = False
         self.mode = "simulation"
         self._llm = None  # llama-cpp-python Llama instance
+
+        # Initialize guardrails (NeMo Guardrails + Llama Guard)
+        self._guard = None
+        self._guardrails_enabled = False
+        self._init_guardrails()
 
         # Try local llama.cpp server first (preferred)
         self._check_local_server(server_url or "http://localhost:8080")
@@ -305,8 +312,76 @@ class MedGemmaEngine:
 
         return text.strip()
 
+    def _init_guardrails(self):
+        """Initialize NeMo Guardrails + Llama Guard (graceful fallback)."""
+        try:
+            from src.guardrails import SentinelGuard
+            self._guard = SentinelGuard()
+            self._guardrails_enabled = self._guard.enabled
+        except ImportError:
+            logger.info("Guardrails module not available")
+        except Exception as e:
+            logger.warning(f"Guardrails initialization failed: {e}")
+
+    def enable_guardrails(self):
+        """Enable guardrails (re-initializes if needed)."""
+        if self._guard:
+            self._guard.enable()
+            self._guardrails_enabled = self._guard.enabled
+        else:
+            self._init_guardrails()
+
+    def disable_guardrails(self):
+        """Temporarily disable guardrails."""
+        self._guardrails_enabled = False
+        if self._guard:
+            self._guard.disable()
+
+    def _check_input_safety(self, messages: List[Dict[str, str]]) -> Optional[str]:
+        """Check input messages against guardrails. Returns refusal message if blocked."""
+        if not self._guardrails_enabled or not self._guard:
+            return None
+
+        # Extract the user message from the messages list
+        user_content = ""
+        for msg in messages:
+            if msg.get("role") == "user":
+                user_content = msg.get("content", "")
+                break
+
+        if not user_content:
+            return None
+
+        result = self._guard.check_input_sync(user_content)
+        if not result.allowed:
+            logger.warning(f"[GUARDRAILS] Input blocked. Violations: {result.violations}")
+            return result.message
+        return None
+
+    def _check_output_safety(self, response: str, messages: List[Dict[str, str]]) -> str:
+        """Check model output against guardrails. Returns sanitized response."""
+        if not self._guardrails_enabled or not self._guard:
+            return response
+
+        user_content = ""
+        for msg in messages:
+            if msg.get("role") == "user":
+                user_content = msg.get("content", "")
+                break
+
+        result = self._guard.check_output_sync(response, user_content)
+        if not result.allowed:
+            logger.warning(f"[GUARDRAILS] Output blocked. Violations: {result.violations}")
+            return result.message
+        return response
+
     def _call_model(self, messages: List[Dict[str, str]]) -> Optional[str]:
-        """Route to the correct backend"""
+        """Route to the correct backend, with guardrails input/output checks."""
+        # --- Input guardrails check ---
+        refusal = self._check_input_safety(messages)
+        if refusal:
+            return refusal
+
         try:
             result = None
             if self.mode == "huggingface":
@@ -316,7 +391,10 @@ class MedGemmaEngine:
             elif self.mode == "llama-cpp-python":
                 result = self._call_llama_cpp(messages)
             if result:
-                return self._strip_thinking(result)
+                result = self._strip_thinking(result)
+                # --- Output guardrails check ---
+                result = self._check_output_safety(result, messages)
+                return result
         except Exception as e:
             logger.error(f"Model call failed: {e}")
         return None
@@ -418,6 +496,63 @@ class MedGemmaEngine:
             return {"status": "success", "analysis": result}
         return self._simulate_symptom_analysis(symptoms, patient_context)
 
+    def analyze_history_evolution(
+        self,
+        patient_id: str,
+        session_history: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """
+        Analyze clinical evolution across recent session cycles.
+
+        Args:
+            patient_id: Patient identifier
+            session_history: Chronological list of compact session snapshots
+
+        Returns:
+            Dict with status + markdown analysis text.
+        """
+        if not session_history or len(session_history) < 2:
+            return {
+                "status": "insufficient_history",
+                "analysis": (
+                    "## Evolution Inter-Cycles\n\n"
+                    "- Historique insuffisant: au moins 2 sessions (2 cycles nuit+jour) sont requises."
+                ),
+            }
+
+        if not self.is_loaded:
+            return {
+                "status": "simulated",
+                "analysis": self._simulate_history_evolution(patient_id, session_history),
+            }
+
+        prompt = self._build_history_evolution_prompt(patient_id, session_history)
+        messages = [
+            {
+                "role": "user",
+                "content": (
+                    "Tu es MedGemma, assistant clinique. Analyse l'evolution entre 2 cycles "
+                    "nuit+jour consecutifs. Reponds UNIQUEMENT en Markdown avec ces sections:\n"
+                    "## Synthese Evolution\n"
+                    "## Insights Nuit\n"
+                    "## Insights Jour\n"
+                    "## Points de Vigilance\n"
+                    "## Recommandations Pratiques\n\n"
+                    "Contrainte: maximum 8 puces au total, concret, sans texte hors sections.\n\n"
+                    + prompt
+                ),
+            }
+        ]
+
+        result = self._call_model(messages)
+        if result:
+            return {"status": "success", "analysis": result}
+
+        return {
+            "status": "fallback",
+            "analysis": self._simulate_history_evolution(patient_id, session_history),
+        }
+
     # ---- Prompt Builders ----
 
     @staticmethod
@@ -455,6 +590,26 @@ class MedGemmaEngine:
             f"Patient Context:\n{patient_context}\n\n"
             f"Night Summary:\n{night_context}\n\n"
             f"Consultation Data:\n{json.dumps(consultation_data, indent=2, ensure_ascii=False, default=_serialize)}"
+        )
+
+    @staticmethod
+    def _build_history_evolution_prompt(
+        patient_id: str,
+        session_history: List[Dict[str, Any]],
+    ) -> str:
+        """Build prompt payload for longitudinal evolution analysis."""
+        history_json = json.dumps(
+            session_history,
+            indent=2,
+            ensure_ascii=False,
+            default=str,
+        )
+        return (
+            f"Patient ID: {patient_id}\n\n"
+            "Historique compact (ordre chronologique):\n"
+            f"{history_json}\n\n"
+            "Focalise sur: tendances des alertes, oxygenation (SpO2), FC, temperature, "
+            "evolution des symptomes, et priorites de surveillance."
         )
 
     # ---- Simulation Fallbacks ----
@@ -517,8 +672,53 @@ class MedGemmaEngine:
             ),
         }
 
+    @staticmethod
+    def _simulate_history_evolution(
+        patient_id: str,
+        session_history: List[Dict[str, Any]],
+    ) -> str:
+        """Deterministic fallback for history evolution analysis."""
+        previous = session_history[-2]
+        current = session_history[-1]
+
+        prev_events = int(previous.get("total_alerts", 0) or 0)
+        curr_events = int(current.get("total_alerts", 0) or 0)
+        delta_events = curr_events - prev_events
+
+        prev_spo2 = previous.get("spo2_min")
+        curr_spo2 = current.get("spo2_min")
+
+        prev_symptoms = previous.get("symptoms", [])
+        curr_symptoms = current.get("symptoms", [])
+
+        trend_label = (
+            "aggravation"
+            if delta_events > 0
+            else "amelioration"
+            if delta_events < 0
+            else "stabilite"
+        )
+
+        return (
+            "## Synthese Evolution\n\n"
+            f"- Patient {patient_id}: tendance globale = {trend_label} "
+            f"(alertes {prev_events} -> {curr_events}).\n\n"
+            "## Insights Nuit\n\n"
+            f"- SpO2 minimale precedente: {prev_spo2 if prev_spo2 is not None else 'N/A'}%.\n"
+            f"- SpO2 minimale actuelle: {curr_spo2 if curr_spo2 is not None else 'N/A'}%.\n\n"
+            "## Insights Jour\n\n"
+            f"- Symptomes precedents: {', '.join(prev_symptoms) if prev_symptoms else 'aucun documente'}.\n"
+            f"- Symptomes actuels: {', '.join(curr_symptoms) if curr_symptoms else 'aucun documente'}.\n\n"
+            "## Points de Vigilance\n\n"
+            "- Surveiller toute baisse recurrente de SpO2 < 92%.\n"
+            "- Correlier alertes nocturnes et plainte clinique diurne.\n\n"
+            "## Recommandations Pratiques\n\n"
+            "- Prioriser reevaluation cardio-respiratoire si progression des alertes.\n"
+            "- Revoir les constantes et le plan de suivi au prochain cycle."
+        )
+
     def get_status(self) -> Dict[str, Any]:
-        """Get engine status"""
+        """Get engine status including guardrails information."""
         model_info = None
         if self.mode == "server":
             model_info = self.server_url
@@ -527,11 +727,17 @@ class MedGemmaEngine:
         elif self.mode == "huggingface":
             model_info = HF_REPO_ID
 
-        return {
+        status = {
             "loaded": self.is_loaded,
             "model_path": model_info,
             "server_url": self.server_url if self.mode == "server" else None,
             "temperature": self.temperature,
             "max_tokens": self.max_tokens,
             "mode": self.mode,
+            "guardrails_enabled": self._guardrails_enabled,
         }
+
+        if self._guard:
+            status["guardrails"] = self._guard.get_status()
+
+        return status

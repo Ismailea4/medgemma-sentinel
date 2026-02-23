@@ -147,6 +147,13 @@ class SentinelState(BaseModel):
     total_alerts: int = Field(default=0)
     processing_time_seconds: float = Field(default=0.0)
     
+    # === Guardrails ===
+    guardrails_enabled: bool = Field(default=False, description="Whether guardrails are active")
+    input_guard_result: Optional[Dict[str, Any]] = Field(default=None, description="Layer 1+2 input check result")
+    output_guard_result: Optional[Dict[str, Any]] = Field(default=None, description="Layer 3 output check result")
+    guardrails_blocked: bool = Field(default=False, description="Whether guardrails blocked the pipeline")
+    guard_log: List[Dict[str, Any]] = Field(default_factory=list, description="Per-node guard audit trail")
+    
     def transition_to(self, new_phase: WorkflowPhase) -> None:
         """Transition to a new workflow phase"""
         self.phase = new_phase

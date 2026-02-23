@@ -36,8 +36,11 @@ typing-extensions>=4.12.0
 llama-cpp-python>=0.3.0
 
 # Optional: HuggingFace model loading
-transformers>=4.44.0
+transformers==4.51.0
 torch>=2.4.0
 
 # Testing
 pytest>=8.3.0
+
+# Guardrails (NeMo Guardrails + Llama Guard 3)
+nemoguardrails>=0.10.0

@@ -205,3 +205,23 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# === MedGemma Sentinel - Project-specific exclusions ===
+# Large model files (loaded locally, not for git)
+models/
+llama-cpp/
+
+# Reference telemedicine code (not part of runtime)
+telemedicine code/
+
+# Large binary/archive files
+*.zip
+*.gguf
+*.bin
+*.safetensors
+
+# Generated data & reports (regenerated at runtime)
+data/sessions/
+data/reports/
+data/graph_store/
+test_output.txt

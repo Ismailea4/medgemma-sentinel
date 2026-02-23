@@ -1,4 +1,4 @@
-"""
+﻿"""
 Report Templates - HTML/Markdown templates for clinical reports
 Used for generating formatted Rap1 (night) and Rap2 (day) reports
 """
@@ -39,13 +39,13 @@ class ReportTemplate(ABC):
 class NightReportTemplate(ReportTemplate):
     """Template for Rap1 - Night Surveillance Report"""
     
-    MARKDOWN_TEMPLATE = """# 🌙 Rapport de Surveillance Nocturne
+    MARKDOWN_TEMPLATE = """# ðŸŒ™ Rapport de Surveillance Nocturne
 
 **MedGemma Sentinel - The Scribe**
 
 ---
 
-## 📋 Informations Générales
+## ðŸ“‹ Informations GÃ©nÃ©rales
 
 | Champ | Valeur |
 |-------|--------|
@@ -53,40 +53,40 @@ class NightReportTemplate(ReportTemplate):
 | **ID** | $patient_id |
 | **Chambre** | $room |
 | **Date** | $date |
-| **Période** | $period |
-| **Généré le** | $generated_at |
+| **PÃ©riode** | $period |
+| **GÃ©nÃ©rÃ© le** | $generated_at |
 
 ---
 
-## 🎯 Résumé Exécutif
+## ðŸŽ¯ RÃ©sumÃ© ExÃ©cutif
 
 $executive_summary
 
 ---
 
-## 🚨 Alertes et Événements
+## ðŸš¨ Alertes et Ã‰vÃ©nements
 
 ### Statistiques
-- **Total événements**: $total_events
-- **Alertes critiques**: $critical_alerts 🔴
-- **Alertes élevées**: $high_alerts 🟠
-- **Alertes modérées**: $medium_alerts 🟡
+- **Total Ã©vÃ©nements**: $total_events
+- **Alertes critiques**: $critical_alerts ðŸ”´
+- **Alertes Ã©levÃ©es**: $high_alerts ðŸŸ 
+- **Alertes modÃ©rÃ©es**: $medium_alerts ðŸŸ¡
 
-### Détail des Événements Critiques
+### DÃ©tail des Ã‰vÃ©nements Critiques
 
 $critical_events_detail
 
-### Chronologie des Événements
+### Chronologie des Ã‰vÃ©nements
 
 $events_timeline
 
 ---
 
-## 💓 Constantes Vitales
+## ðŸ’“ Constantes Vitales
 
-### Résumé
+### RÃ©sumÃ©
 
-| Paramètre | Min | Max | Moyenne | Anomalies |
+| ParamÃ¨tre | Min | Max | Moyenne | Anomalies |
 |-----------|-----|-----|---------|-----------|
 $vitals_table
 
@@ -96,61 +96,67 @@ $vitals_observations
 
 ---
 
-## 😴 Qualité du Sommeil
+## ðŸ˜´ QualitÃ© du Sommeil
 
 | Indicateur | Valeur |
 |------------|--------|
 | **Score global** | $sleep_score/100 |
-| **Qualité** | $sleep_quality |
+| **QualitÃ©** | $sleep_quality |
 | **Interruptions** | $sleep_interruptions |
-| **Temps sommeil estimé** | $sleep_time |
+| **Temps sommeil estimÃ©** | $sleep_time |
 
 $sleep_observations
 
 ---
 
-## 🔊 Analyse Audio
+## ðŸ”Š Analyse Audio
 
 $audio_analysis
 
 ---
 
-## 👁️ Analyse Vision (IR)
+## ðŸ‘ï¸ Analyse Vision (IR)
 
 $vision_analysis
 
 ---
 
-## ✅ Interventions Effectuées
+## âœ… Interventions EffectuÃ©es
 
 $interventions
 
 ---
 
-## 📌 Recommandations pour l'Équipe de Jour
+## ðŸ“Œ Recommandations pour l'Ã‰quipe de Jour
 
 $recommendations
 
 ---
 
-## 📊 Graphiques
+## Evolution Inter-Cycles (2 sessions)
 
-*[Les graphiques de tendances sont disponibles dans la version PDF complète]*
+$history_evolution_insights
 
 ---
 
-## ⚠️ Points de Vigilance
+## ðŸ“Š Graphiques
+
+*[Les graphiques de tendances sont disponibles dans la version PDF complÃ¨te]*
+
+---
+
+## âš ï¸ Points de Vigilance
 
 $vigilance_points
 
 ---
 
-**Rapport généré automatiquement par MedGemma Sentinel**
+**Rapport gÃ©nÃ©rÃ© automatiquement par MedGemma Sentinel**
 
-*Ce rapport est un outil d'aide à la décision. Il ne remplace pas l'évaluation clinique par un professionnel de santé qualifié.*
+*Ce rapport est un outil d'aide Ã  la dÃ©cision. Il ne remplace pas l'Ã©valuation clinique par un professionnel de santÃ© qualifiÃ©.*
 
 ---
-*Version: 1.0 | Système: MedGemma Sentinel - The Scribe*
+*Version: 1.0 | SystÃ¨me: MedGemma Sentinel - The Scribe*
 """
     
     HTML_TEMPLATE = """<!DOCTYPE html>
@@ -348,30 +354,30 @@ $vigilance_points
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">🌙</div>
+            <div class="logo">ðŸŒ™</div>
             <h1>Rapport de Surveillance Nocturne</h1>
             <div class="subtitle">MedGemma Sentinel - The Scribe</div>
         </div>
         
         <div class="section">
-            <h2>📋 Informations Générales</h2>
+            <h2>ðŸ“‹ Informations GÃ©nÃ©rales</h2>
             <table class="info-table">
                 <tr><td>Patient</td><td><strong>$patient_name</strong></td></tr>
                 <tr><td>ID</td><td>$patient_id</td></tr>
                 <tr><td>Chambre</td><td>$room</td></tr>
                 <tr><td>Date</td><td>$date</td></tr>
-                <tr><td>Période</td><td>$period</td></tr>
-                <tr><td>Généré le</td><td>$generated_at</td></tr>
+                <tr><td>PÃ©riode</td><td>$period</td></tr>
+                <tr><td>GÃ©nÃ©rÃ© le</td><td>$generated_at</td></tr>
             </table>
         </div>
         
         <div class="section">
-            <h2>🎯 Résumé Exécutif</h2>
+            <h2>ðŸŽ¯ RÃ©sumÃ© ExÃ©cutif</h2>
             <p>$executive_summary</p>
         </div>
         
         <div class="section">
-            <h2>🚨 Alertes et Événements</h2>
+            <h2>ðŸš¨ Alertes et Ã‰vÃ©nements</h2>
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="number">$total_events</div>
@@ -383,39 +389,39 @@ $vigilance_points
                 </div>
                 <div class="stat-card">
                     <div class="number" style="color: var(--warning-color);">$high_alerts</div>
-                    <div class="label">Élevées</div>
+                    <div class="label">Ã‰levÃ©es</div>
                 </div>
                 <div class="stat-card">
                     <div class="number" style="color: #d69e2e;">$medium_alerts</div>
-                    <div class="label">Modérées</div>
+                    <div class="label">ModÃ©rÃ©es</div>
                 </div>
             </div>
             $critical_events_html
         </div>
         
         <div class="section">
-            <h2>💓 Constantes Vitales</h2>
+            <h2>ðŸ’“ Constantes Vitales</h2>
             $vitals_html
         </div>
         
         <div class="section">
-            <h2>😴 Qualité du Sommeil</h2>
+            <h2>ðŸ˜´ QualitÃ© du Sommeil</h2>
             <table class="info-table">
                 <tr><td>Score global</td><td><strong>$sleep_score/100</strong></td></tr>
-                <tr><td>Qualité</td><td>$sleep_quality</td></tr>
+                <tr><td>QualitÃ©</td><td>$sleep_quality</td></tr>
                 <tr><td>Interruptions</td><td>$sleep_interruptions</td></tr>
             </table>
         </div>
         
         <div class="section">
-            <h2>📌 Recommandations</h2>
+            <h2>ðŸ“Œ Recommandations</h2>
             $recommendations_html
         </div>
         
         <div class="footer">
-            <p><strong>Rapport généré automatiquement par MedGemma Sentinel</strong></p>
-            <p>Ce rapport est un outil d'aide à la décision. Il ne remplace pas l'évaluation clinique par un professionnel de santé qualifié.</p>
-            <p>Version 1.0 | Système: MedGemma Sentinel - The Scribe</p>
+            <p><strong>Rapport gÃ©nÃ©rÃ© automatiquement par MedGemma Sentinel</strong></p>
+            <p>Ce rapport est un outil d'aide Ã  la dÃ©cision. Il ne remplace pas l'Ã©valuation clinique par un professionnel de santÃ© qualifiÃ©.</p>
+            <p>Version 1.0 | SystÃ¨me: MedGemma Sentinel - The Scribe</p>
         </div>
     </div>
 </body>
@@ -452,7 +458,7 @@ $vigilance_points
         sleep_score = night_data.get("sleep_quality_score", 0)
         sleep_quality = "Excellente" if sleep_score > 80 else \
                        "Bonne" if sleep_score > 60 else \
-                       "Modérée" if sleep_score > 40 else "Mauvaise"
+                       "ModÃ©rÃ©e" if sleep_score > 40 else "Mauvaise"
         
         return {
             "patient_name": data.get("patient_name", "N/A"),
@@ -461,7 +467,7 @@ $vigilance_points
             "date": self._format_date_only(),
             "period": data.get("period", "21:00 - 07:00"),
             "generated_at": self._format_date(),
-            "executive_summary": data.get("summary", "Aucun résumé disponible."),
+            "executive_summary": data.get("summary", "Aucun rÃ©sumÃ© disponible."),
             "total_events": str(len(events)),
             "critical_alerts": str(len(critical)),
             "high_alerts": str(len(high)),
@@ -469,17 +475,21 @@ $vigilance_points
             "critical_events_detail": self._format_events_markdown(critical),
             "events_timeline": self._format_timeline_markdown(events),
             "vitals_table": self._format_vitals_table(data.get("vitals_summary", {})),
-            "vitals_observations": data.get("vitals_observations", "Pas d'observations particulières."),
+            "vitals_observations": data.get("vitals_observations", "Pas d'observations particuliÃ¨res."),
             "sleep_score": str(int(sleep_score)) if sleep_score else "N/A",
             "sleep_quality": sleep_quality,
             "sleep_interruptions": str(night_data.get("alerts_triggered", 0)),
             "sleep_time": data.get("sleep_time", "N/A"),
             "sleep_observations": data.get("sleep_observations", ""),
-            "audio_analysis": data.get("audio_analysis", "Aucune anomalie audio significative détectée."),
-            "vision_analysis": data.get("vision_analysis", "Aucune anomalie visuelle significative détectée."),
+            "audio_analysis": data.get("audio_analysis", "Aucune anomalie audio significative dÃ©tectÃ©e."),
+            "vision_analysis": data.get("vision_analysis", "Aucune anomalie visuelle significative dÃ©tectÃ©e."),
             "interventions": data.get("interventions", "Aucune intervention requise."),
             "recommendations": self._format_recommendations_markdown(data.get("recommendations", [])),
-            "vigilance_points": data.get("vigilance_points", "Surveillance standard recommandée.")
+            "vigilance_points": data.get("vigilance_points", "Surveillance standard recommandÃ©e."),
+            "history_evolution_insights": data.get(
+                "history_evolution_insights",
+                "*Historique insuffisant pour analyse evolutive (2 sessions requises).*",
+            ),
         }
     
     def _prepare_html_sections(self, data: Dict[str, Any]) -> Dict[str, str]:
@@ -491,7 +501,7 @@ $vigilance_points
         for event in critical:
             critical_html += f"""
             <div class="alert-box alert-critical">
-                <strong>{event.get('type', 'Événement')}</strong> - {event.get('timestamp', 'N/A')}<br>
+                <strong>{event.get('type', 'Ã‰vÃ©nement')}</strong> - {event.get('timestamp', 'N/A')}<br>
                 {event.get('description', '')}
             </div>
             """
@@ -499,11 +509,11 @@ $vigilance_points
         recommendations = data.get("recommendations", [])
         rec_html = ""
         for rec in recommendations:
-            rec_html += f'<div class="recommendation">• {rec}</div>'
+            rec_html += f'<div class="recommendation">â€¢ {rec}</div>'
         
         vitals = data.get("vitals_summary", {})
         vitals_html = """<table class="vitals-table">
-            <tr><th>Paramètre</th><th>Min</th><th>Max</th><th>Moyenne</th></tr>
+            <tr><th>ParamÃ¨tre</th><th>Min</th><th>Max</th><th>Moyenne</th></tr>
         """
         for param, values in vitals.items():
             vitals_html += f"""
@@ -517,7 +527,7 @@ $vigilance_points
         vitals_html += "</table>"
         
         return {
-            "critical_events_html": critical_html or "<p>Aucun événement critique.</p>",
+            "critical_events_html": critical_html or "<p>Aucun Ã©vÃ©nement critique.</p>",
             "recommendations_html": rec_html or "<p>Poursuivre surveillance standard.</p>",
             "vitals_html": vitals_html
         }
@@ -525,25 +535,25 @@ $vigilance_points
     def _format_events_markdown(self, events: List[Dict]) -> str:
         """Format events list as Markdown"""
         if not events:
-            return "*Aucun événement critique détecté.*"
+            return "*Aucun Ã©vÃ©nement critique dÃ©tectÃ©.*"
         
         lines = []
         for event in events:
-            lines.append(f"- **{event.get('timestamp', 'N/A')}** - {event.get('type', 'Événement')}: {event.get('description', '')}")
+            lines.append(f"- **{event.get('timestamp', 'N/A')}** - {event.get('type', 'Ã‰vÃ©nement')}: {event.get('description', '')}")
         
         return "\n".join(lines)
     
     def _format_timeline_markdown(self, events: List[Dict]) -> str:
         """Format events as timeline"""
         if not events:
-            return "*Aucun événement enregistré.*"
+            return "*Aucun Ã©vÃ©nement enregistrÃ©.*"
         
         lines = ["| Heure | Type | Niveau | Description |", "|-------|------|--------|-------------|"]
         for event in sorted(events, key=lambda e: e.get("timestamp", "")):
             time = event.get("timestamp", "N/A")
             if "T" in str(time):
                 time = str(time).split("T")[1][:5]
-            level_emoji = {"critical": "🔴", "high": "🟠", "medium": "🟡", "low": "🟢"}.get(event.get("level", "low"), "⚪")
+            level_emoji = {"critical": "ðŸ”´", "high": "ðŸŸ ", "medium": "ðŸŸ¡", "low": "ðŸŸ¢"}.get(event.get("level", "low"), "âšª")
             lines.append(f"| {time} | {event.get('type', 'N/A')} | {level_emoji} | {event.get('description', '')[:50]} |")
         
         return "\n".join(lines)
@@ -555,7 +565,7 @@ $vigilance_points
         
         rows = []
         for param, values in vitals.items():
-            anomalies = "✓" if values.get("anomalies", 0) == 0 else f"⚠️ {values.get('anomalies', 0)}"
+            anomalies = "âœ“" if values.get("anomalies", 0) == 0 else f"âš ï¸ {values.get('anomalies', 0)}"
             rows.append(f"| {param} | {values.get('min', '-')} | {values.get('max', '-')} | {values.get('avg', '-')} | {anomalies} |")
         
         return "\n".join(rows)
@@ -563,7 +573,7 @@ $vigilance_points
     def _format_recommendations_markdown(self, recommendations: List[str]) -> str:
         """Format recommendations list"""
         if not recommendations:
-            return "- Poursuivre surveillance standard\n- Pas d'action particulière requise"
+            return "- Poursuivre surveillance standard\n- Pas d'action particuliÃ¨re requise"
         
         return "\n".join([f"- {rec}" for rec in recommendations])
 
@@ -571,13 +581,13 @@ $vigilance_points
 class DayReportTemplate(ReportTemplate):
     """Template for Rap2 - Day Consultation Report"""
     
-    MARKDOWN_TEMPLATE = """# ☀️ Rapport de Consultation Médicale
+    MARKDOWN_TEMPLATE = """# â˜€ï¸ Rapport de Consultation MÃ©dicale
 
 **MedGemma Sentinel - The Scribe**
 
 ---
 
-## 📋 Identification
+## ðŸ“‹ Identification
 
 | Champ | Valeur |
 |-------|--------|
@@ -586,17 +596,23 @@ class DayReportTemplate(ReportTemplate):
 | **Date** | $date |
 | **Consultant** | $provider |
 | **Mode** | $consultation_mode |
-| **Généré le** | $generated_at |
+| **GÃ©nÃ©rÃ© le** | $generated_at |
 
 ---
 
-## 🌙 Contexte Nocturne
+## ðŸŒ™ Contexte Nocturne
 
 $night_context
 
 ---
 
-## 📝 Motif de Consultation
+## Evolution Inter-Cycles (2 sessions)
+
+$history_evolution_insights
+
+---
+
+## ðŸ“ Motif de Consultation
 
 **Plainte principale:** $chief_complaint
 
@@ -604,17 +620,17 @@ $night_context
 
 $illness_history
 
-### Symptômes Associés
+### SymptÃ´mes AssociÃ©s
 
 $symptoms_list
 
 ---
 
-## 🩺 Examen Clinique
+## ðŸ©º Examen Clinique
 
 ### Constantes Vitales
 
-| Paramètre | Valeur | Statut |
+| ParamÃ¨tre | Valeur | Statut |
 |-----------|--------|--------|
 $vitals_table
 
@@ -624,19 +640,19 @@ $physical_exam
 
 ---
 
-## 🔬 Analyses Complémentaires
+## ðŸ”¬ Analyses ComplÃ©mentaires
 
 $additional_tests
 
 ---
 
-## 🧠 Analyse IA (MedGemma)
+## ðŸ§  Analyse IA (MedGemma)
 
-### Diagnostics Différentiels
+### Diagnostics DiffÃ©rentiels
 
 $differential_diagnosis
 
-### Évaluation de la Gravité
+### Ã‰valuation de la GravitÃ©
 
 **Niveau:** $severity_level
 
@@ -644,9 +660,9 @@ $severity_details
 
 ---
 
-## 📋 Conclusion
+## ðŸ“‹ Conclusion
 
-### Diagnostic Retenu/Suspecté
+### Diagnostic Retenu/SuspectÃ©
 
 $diagnosis
 
@@ -656,40 +672,40 @@ $diagnosis_reasoning
 
 ---
 
-## 💊 Plan de Prise en Charge
+## ðŸ’Š Plan de Prise en Charge
 
-### Traitement Proposé
+### Traitement ProposÃ©
 
 $treatment_plan
 
-### Examens à Réaliser
+### Examens Ã  RÃ©aliser
 
 $tests_to_order
 
-### Suivi Recommandé
+### Suivi RecommandÃ©
 
 $follow_up
 
 ---
 
-## ⚠️ Points de Vigilance
+## âš ï¸ Points de Vigilance
 
 $vigilance_points
 
 ---
 
-## 📨 Orientation
+## ðŸ“¨ Orientation
 
 $orientation
 
 ---
 
-**Rapport généré automatiquement par MedGemma Sentinel**
+**Rapport gÃ©nÃ©rÃ© automatiquement par MedGemma Sentinel**
 
-*Ce rapport est un outil d'aide à la décision. Il ne remplace pas l'évaluation clinique par un professionnel de santé qualifié. Le diagnostic final et les décisions thérapeutiques relèvent de la responsabilité du médecin.*
+*Ce rapport est un outil d'aide Ã  la dÃ©cision. Il ne remplace pas l'Ã©valuation clinique par un professionnel de santÃ© qualifiÃ©. Le diagnostic final et les dÃ©cisions thÃ©rapeutiques relÃ¨vent de la responsabilitÃ© du mÃ©decin.*
 
 ---
-*Version: 1.0 | Système: MedGemma Sentinel - The Scribe*
+*Version: 1.0 | SystÃ¨me: MedGemma Sentinel - The Scribe*
 """
     
     HTML_TEMPLATE = """<!DOCTYPE html>
@@ -817,13 +833,13 @@ $orientation
 <body>
     <div class="container">
         <div class="header">
-            <div style="font-size: 3em;">☀️</div>
-            <h1>Rapport de Consultation Médicale</h1>
+            <div style="font-size: 3em;">â˜€ï¸</div>
+            <h1>Rapport de Consultation MÃ©dicale</h1>
             <div>MedGemma Sentinel - The Scribe</div>
         </div>
         
         <div class="section">
-            <h2>📋 Identification</h2>
+            <h2>ðŸ“‹ Identification</h2>
             <table>
                 <tr><td><strong>Patient</strong></td><td>$patient_name</td></tr>
                 <tr><td><strong>ID</strong></td><td>$patient_id</td></tr>
@@ -833,44 +849,44 @@ $orientation
         </div>
         
         <div class="section">
-            <h2>📝 Motif de Consultation</h2>
+            <h2>ðŸ“ Motif de Consultation</h2>
             <p><strong>$chief_complaint</strong></p>
             <p>$illness_history</p>
         </div>
         
         <div class="section">
-            <h2>🩺 Examen Clinique</h2>
+            <h2>ðŸ©º Examen Clinique</h2>
             $vitals_html
             <h3>Examen Physique</h3>
             <p>$physical_exam</p>
         </div>
         
         <div class="section">
-            <h2>🧠 Analyse IA</h2>
-            <h3>Diagnostics Différentiels</h3>
+            <h2>ðŸ§  Analyse IA</h2>
+            <h3>Diagnostics DiffÃ©rentiels</h3>
             <ol>$differential_html</ol>
             
-            <h3>Gravité</h3>
+            <h3>GravitÃ©</h3>
             <span class="severity-badge severity-$severity_class">$severity_level</span>
         </div>
         
         <div class="section">
-            <h2>📋 Conclusion</h2>
+            <h2>ðŸ“‹ Conclusion</h2>
             <div class="diagnosis-box">
                 <strong>Diagnostic:</strong> $diagnosis
             </div>
         </div>
         
         <div class="section">
-            <h2>💊 Plan de Prise en Charge</h2>
+            <h2>ðŸ’Š Plan de Prise en Charge</h2>
             <div class="treatment-box">
                 $treatment_html
             </div>
         </div>
         
         <div class="footer">
-            <p><strong>Rapport généré automatiquement par MedGemma Sentinel</strong></p>
-            <p>Ce rapport ne remplace pas l'évaluation clinique par un professionnel qualifié.</p>
+            <p><strong>Rapport gÃ©nÃ©rÃ© automatiquement par MedGemma Sentinel</strong></p>
+            <p>Ce rapport ne remplace pas l'Ã©valuation clinique par un professionnel qualifiÃ©.</p>
         </div>
     </div>
 </body>
@@ -897,45 +913,49 @@ $orientation
         vitals = day_data.get("vitals", {})
         vitals_rows = []
         for param, value in vitals.items():
-            status = "✓"  # Simplified
+            status = "âœ“"  # Simplified
             vitals_rows.append(f"| {param} | {value} | {status} |")
         
         # Build symptoms list
         symptoms = day_data.get("symptoms", [])
-        symptoms_list = "\n".join([f"- {s}" for s in symptoms]) if symptoms else "*Aucun symptôme associé rapporté*"
+        symptoms_list = "\n".join([f"- {s}" for s in symptoms]) if symptoms else "*Aucun symptÃ´me associÃ© rapportÃ©*"
         
         # Build differential diagnosis
         differentials = day_data.get("differential_diagnosis", [])
-        diff_text = "\n".join([f"{i}. {d}" for i, d in enumerate(differentials, 1)]) if differentials else "*En cours d'évaluation*"
+        diff_text = "\n".join([f"{i}. {d}" for i, d in enumerate(differentials, 1)]) if differentials else "*En cours d'Ã©valuation*"
         
         # Build treatment plan
         actions = day_data.get("recommended_actions", [])
-        treatment = "\n".join([f"- {a}" for a in actions]) if actions else "*À définir après examens*"
+        treatment = "\n".join([f"- {a}" for a in actions]) if actions else "*Ã€ dÃ©finir aprÃ¨s examens*"
         
         return {
             "patient_name": data.get("patient_name", "N/A"),
             "patient_id": data.get("patient_id", "N/A"),
             "date": self._format_date_only(),
             "provider": data.get("provider", "MedGemma Sentinel"),
-            "consultation_mode": day_data.get("consultation_mode", "Général").capitalize(),
+            "consultation_mode": day_data.get("consultation_mode", "GÃ©nÃ©ral").capitalize(),
             "generated_at": self._format_date(),
-            "night_context": data.get("night_context", "*Pas de données nocturnes disponibles*"),
-            "chief_complaint": day_data.get("presenting_complaint", "Non spécifié"),
-            "illness_history": data.get("illness_history", "*À compléter*"),
+            "night_context": data.get("night_context", "*Pas de donnÃ©es nocturnes disponibles*"),
+            "chief_complaint": day_data.get("presenting_complaint", "Non spÃ©cifiÃ©"),
+            "illness_history": data.get("illness_history", "*Ã€ complÃ©ter*"),
             "symptoms_list": symptoms_list,
             "vitals_table": "\n".join(vitals_rows) if vitals_rows else "| - | - | - |",
             "physical_exam": self._format_exam(day_data.get("physical_exam", {})),
-            "additional_tests": data.get("additional_tests", "*Aucun examen complémentaire réalisé*"),
+            "additional_tests": data.get("additional_tests", "*Aucun examen complÃ©mentaire rÃ©alisÃ©*"),
             "differential_diagnosis": diff_text,
-            "severity_level": day_data.get("severity_assessment", "Modérée"),
+            "severity_level": day_data.get("severity_assessment", "ModÃ©rÃ©e"),
             "severity_details": data.get("severity_details", ""),
             "diagnosis": day_data.get("final_diagnosis", "*Diagnostic en attente de confirmation*"),
             "diagnosis_reasoning": data.get("diagnosis_reasoning", ""),
             "treatment_plan": treatment,
-            "tests_to_order": data.get("tests_to_order", "*Selon évolution clinique*"),
-            "follow_up": data.get("follow_up", "Réévaluation selon évolution"),
+            "tests_to_order": data.get("tests_to_order", "*Selon Ã©volution clinique*"),
+            "follow_up": data.get("follow_up", "RÃ©Ã©valuation selon Ã©volution"),
             "vigilance_points": data.get("vigilance_points", "Surveillance des signes d'aggravation"),
-            "orientation": data.get("orientation", "Suivi ambulatoire / Hospitalisation selon gravité")
+            "orientation": data.get("orientation", "Suivi ambulatoire / Hospitalisation selon gravitÃ©"),
+            "history_evolution_insights": data.get(
+                "history_evolution_insights",
+                "*Historique insuffisant pour analyse evolutive (2 sessions requises).*",
+            ),
         }
     
     def _prepare_html_sections(self, data: Dict[str, Any]) -> Dict[str, str]:
@@ -944,22 +964,22 @@ $orientation
         
         # Vitals HTML
         vitals = day_data.get("vitals", {})
-        vitals_html = "<table><tr><th>Paramètre</th><th>Valeur</th></tr>"
+        vitals_html = "<table><tr><th>ParamÃ¨tre</th><th>Valeur</th></tr>"
         for param, value in vitals.items():
             vitals_html += f"<tr><td>{param}</td><td>{value}</td></tr>"
         vitals_html += "</table>"
         
         # Differential HTML
         differentials = day_data.get("differential_diagnosis", [])
-        diff_html = "".join([f"<li>{d}</li>" for d in differentials]) if differentials else "<li>En évaluation</li>"
+        diff_html = "".join([f"<li>{d}</li>" for d in differentials]) if differentials else "<li>En Ã©valuation</li>"
         
         # Treatment HTML
         actions = day_data.get("recommended_actions", [])
-        treatment_html = "<ul>" + "".join([f"<li>{a}</li>" for a in actions]) + "</ul>" if actions else "<p>À définir</p>"
+        treatment_html = "<ul>" + "".join([f"<li>{a}</li>" for a in actions]) + "</ul>" if actions else "<p>Ã€ dÃ©finir</p>"
         
         # Severity class
-        severity = day_data.get("severity_assessment", "Modérée").lower()
-        severity_map = {"faible": "low", "modérée": "moderate", "élevée": "high", "critique": "critical"}
+        severity = day_data.get("severity_assessment", "ModÃ©rÃ©e").lower()
+        severity_map = {"faible": "low", "modÃ©rÃ©e": "moderate", "Ã©levÃ©e": "high", "critique": "critical"}
         severity_class = severity_map.get(severity, "moderate")
         
         return {
@@ -972,7 +992,7 @@ $orientation
     def _format_exam(self, exam: Dict[str, str]) -> str:
         """Format physical exam findings"""
         if not exam:
-            return "*Examen physique non documenté*"
+            return "*Examen physique non documentÃ©*"
         
         lines = []
         for system, finding in exam.items():

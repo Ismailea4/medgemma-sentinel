@@ -1,0 +1,42 @@
+# MedGemma Sentinel - Output Guardrails (Colang 1.0)
+# Adapted from telemedicine code/Adversarial Threat Telemedecine/config/rails.co
+# This file implements output-side safety flows (Final Audit layer)
+
+# ============================================================
+# Layer 1: Self-Check Output Flow
+# Screens MedGemma's generated responses for policy violations
+# ============================================================
+
+define subflow self check output
+  $allowed = execute self_check_output
+
+  if not $allowed
+    bot output blocked
+    stop
+
+
+# ============================================================
+# Layer 2: Llama Guard Output Classification
+# Final audit of generated content through Llama Guard 3
+# Catches harmful medical advice or PII leakage in responses
+# ============================================================
+
+define subflow llama guard check output
+  $llama_guard_response = execute llama_guard_check_output
+  $allowed = $llama_guard_response["allowed"]
+  $llama_guard_policy_violations = $llama_guard_response["policy_violations"]
+
+  if not $allowed
+    bot output blocked
+    stop
+
+
+# ============================================================
+# Bot Response Definitions for Output Blocking
+# ============================================================
+
+define bot output blocked
+  "I apologize, but my response was flagged by the safety system. I cannot provide this information as it may contain harmful or inappropriate medical content. Please rephrase your question or consult a healthcare professional."
+
+define bot output sanitized
+  "My previous response contained content that needed to be filtered for safety reasons. I can try to answer your question in a way that complies with medical safety guidelines. Please ask again."

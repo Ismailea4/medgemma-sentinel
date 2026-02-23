@@ -1,0 +1,63 @@
+{
+  "patient_id": "DEMO001",
+  "name": "Jean Camara",
+  "gender": "male",
+  "date_of_birth": "1963-05-15",
+  "age": 62,
+  "room": "500",
+  "bed": "A",
+  "height_cm": 170,
+  "weight_kg": 78,
+  "blood_type": "A+",
+  "conditions": [
+    {
+      "name": "Insuffisance cardiaque",
+      "icd_code": "I50",
+      "status": "chronic"
+    },
+    {
+      "name": "Diabète type 2",
+      "icd_code": "E11",
+      "status": "chronic"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Metformine 500mg",
+      "frequency": "2x/jour"
+    },
+    {
+      "name": "Ramipril 5mg",
+      "frequency": "1x/jour"
+    },
+    {
+      "name": "Amlodipine 5mg",
+      "frequency": "1x/jour"
+    },
+    {
+      "name": "Bisoprolol 2.5mg",
+      "frequency": "1x/jour"
+    },
+    {
+      "name": "Insuline Lantus",
+      "frequency": "1x/jour"
+    },
+    {
+      "name": "Salbutamol inh.",
+      "frequency": "si besoin"
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Pénicilline",
+      "severity": "moderate",
+      "reaction": "Éruption cutanée"
+    }
+  ],
+  "risk_factors": [
+    "Diabète",
+    "Insuffisance cardiaque"
+  ],
+  "admission_date": "2026-02-23T13:43:04.878284",
+  "admission_reason": "Surveillance cardio-respiratoire"
+}
