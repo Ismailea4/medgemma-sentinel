@@ -801,15 +801,9 @@ def main():
         pdf_gen = PDFReportGenerator(output_dir="./data/reports")
         night_template = NightReportTemplate()
         day_template = DayReportTemplate()
+        # history_engine is no longer needed — evolution analysis uses
+        # deterministic threshold-based comparison (no MedGemma LLM call).
         history_engine = None
-        if MEDGEMMA_ENGINE_AVAILABLE:
-            try:
-                print_subheader("Initializing MedGemma History Analyzer")
-                history_engine = MedGemmaEngine(temperature=0.2, max_tokens=512)
-                status = history_engine.get_status()
-                print(f"  [HISTORY] MedGemma mode: {status.get('mode')}")
-            except Exception as history_err:
-                print(f"  [WARN] MedGemma history analyzer unavailable: {history_err}")
 
         result = None
         base_clinical_date = date.today()
