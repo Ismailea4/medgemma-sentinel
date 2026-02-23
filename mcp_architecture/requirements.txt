@@ -1,0 +1,8 @@
+huggingface_hub #for download of google hear model
+fastmcp
+dotenv
+ollama
+librosa
+numpy
+scikit-learn
+joblib
