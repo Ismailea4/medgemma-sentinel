@@ -117,19 +117,50 @@ Analyzes multiple patient reports over time to detect trends and generate evolut
 ### For Vitals Monitoring Only
 ```bash
 pip install -r night_cardiology_sentinel/requirements.txt
+pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
 streamlit run app_night_cardiology_sentinal.py
+```
+
+Add your Hugging Face token in `night_cardiology_sentinel/.env`:
+```
+HF_TOKEN=your_hugging_face_token
+```
+
+Optional local model download:
+```bash
+pip install -U "huggingface_hub[cli]"
+huggingface-cli download Ismailea04/medgemma-night-sentinel --local-dir ./models
 ```
 
 ### For MCP-Based Clinical Reasoning
 ```bash
 pip install -r mcp_architecture/requirements.txt
+ollama pull amsaravi/medgemma-4b-it:q6
 streamlit run app_mcp_cardiology.py
+```
+
+Install Ollama from https://ollama.ai before pulling the model.
+
+Add your Hugging Face token in `mcp_architecture/.env`:
+```
+HF_TOKEN=your_hugging_face_token
 ```
 
 ### For Longitudinal Report Analysis
 ```bash
 pip install -r longitudinal_src/requirements.txt
 streamlit run app_longitudinal_analysis.py
+```
+
+Add your Hugging Face token in `longitudinal_src/.env`:
+```
+HF_TOKEN=your_hugging_face_token
+```
+
+Download the local model:
+```bash
+pip install -U "huggingface_hub[cli]"
+huggingface-cli download hmzBen/medgemma-1.5-medical-q4km --local-dir ./models
 ```
 
 ### For Full System
