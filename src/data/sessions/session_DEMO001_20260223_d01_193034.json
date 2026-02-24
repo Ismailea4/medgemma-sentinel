@@ -1,0 +1,627 @@
+{
+  "session_id": "20260223_d01_193034",
+  "created_at": "2026-02-23T19:30:34.569705",
+  "clinical_date": "2026-02-23",
+  "day_index": 1,
+  "patient_profile": {
+    "patient_id": "DEMO001",
+    "name": "Jean Camara",
+    "gender": "male",
+    "date_of_birth": "1963-05-15",
+    "age": 62,
+    "room": "500",
+    "bed": "A",
+    "height_cm": 170,
+    "weight_kg": 78,
+    "blood_type": "A+",
+    "conditions": [
+      {
+        "name": "Insuffisance cardiaque",
+        "icd_code": "I50",
+        "status": "chronic"
+      },
+      {
+        "name": "Diabète type 2",
+        "icd_code": "E11",
+        "status": "chronic"
+      }
+    ],
+    "medications": [
+      {
+        "name": "Metformine 500mg",
+        "frequency": "2x/jour"
+      },
+      {
+        "name": "Ramipril 5mg",
+        "frequency": "1x/jour"
+      },
+      {
+        "name": "Amlodipine 5mg",
+        "frequency": "1x/jour"
+      },
+      {
+        "name": "Bisoprolol 2.5mg",
+        "frequency": "1x/jour"
+      },
+      {
+        "name": "Insuline Lantus",
+        "frequency": "1x/jour"
+      },
+      {
+        "name": "Salbutamol inh.",
+        "frequency": "si besoin"
+      }
+    ],
+    "allergies": [
+      {
+        "substance": "Pénicilline",
+        "severity": "moderate",
+        "reaction": "Éruption cutanée"
+      }
+    ],
+    "risk_factors": [
+      "Diabète",
+      "Insuffisance cardiaque"
+    ],
+    "admission_date": "2026-02-23T13:43:04.878284",
+    "admission_reason": "Surveillance cardio-respiratoire"
+  },
+  "generated_session_data": {
+    "night_scenario": {
+      "patient_id": "DEMO001",
+      "patient_name": "Jean Camara",
+      "room": "500",
+      "clinical_date": "2026-02-23",
+      "scenario_type": "moderate",
+      "vitals_input": [
+        {
+          "timestamp": "2026-02-23T22:00:00",
+          "spo2": 99,
+          "heart_rate": 63,
+          "temperature": 36.3,
+          "respiratory_rate": 16,
+          "blood_pressure": {
+            "systolic": 125,
+            "diastolic": 65
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-23T22:15:00",
+          "spo2": 98,
+          "heart_rate": 71,
+          "temperature": 36.5,
+          "respiratory_rate": 14,
+          "blood_pressure": {
+            "systolic": 133,
+            "diastolic": 79
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-23T22:30:00",
+          "spo2": 96,
+          "heart_rate": 63,
+          "temperature": 36.9,
+          "respiratory_rate": 14,
+          "blood_pressure": {
+            "systolic": 131,
+            "diastolic": 75
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-23T22:45:00",
+          "spo2": 95,
+          "heart_rate": 73,
+          "temperature": 36.3,
+          "respiratory_rate": 15,
+          "blood_pressure": {
+            "systolic": 125,
+            "diastolic": 73
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-23T23:00:00",
+          "spo2": 95,
+          "heart_rate": 76,
+          "temperature": 36.6,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 116,
+            "diastolic": 83
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-23T23:15:00",
+          "spo2": 98,
+          "heart_rate": 62,
+          "temperature": 36.8,
+          "respiratory_rate": 18,
+          "blood_pressure": {
+            "systolic": 129,
+            "diastolic": 74
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-23T23:30:00",
+          "spo2": 96,
+          "heart_rate": 67,
+          "temperature": 36.4,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 126,
+            "diastolic": 74
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-23T23:45:00",
+          "spo2": 95,
+          "heart_rate": 88,
+          "temperature": 36.6,
+          "respiratory_rate": 14,
+          "blood_pressure": {
+            "systolic": 132,
+            "diastolic": 75
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T00:00:00",
+          "spo2": 98,
+          "heart_rate": 90,
+          "temperature": 36.9,
+          "respiratory_rate": 15,
+          "blood_pressure": {
+            "systolic": 111,
+            "diastolic": 83
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T00:15:00",
+          "spo2": 97,
+          "heart_rate": 85,
+          "temperature": 37.0,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 133,
+            "diastolic": 77
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T00:30:00",
+          "spo2": 93,
+          "heart_rate": 137,
+          "temperature": 37.5,
+          "respiratory_rate": 20,
+          "blood_pressure": {
+            "systolic": 113,
+            "diastolic": 66
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T00:45:00",
+          "spo2": 95,
+          "heart_rate": 84,
+          "temperature": 36.2,
+          "respiratory_rate": 15,
+          "blood_pressure": {
+            "systolic": 120,
+            "diastolic": 77
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T01:00:00",
+          "spo2": 97,
+          "heart_rate": 76,
+          "temperature": 36.4,
+          "respiratory_rate": 16,
+          "blood_pressure": {
+            "systolic": 135,
+            "diastolic": 69
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T01:15:00",
+          "spo2": 95,
+          "heart_rate": 85,
+          "temperature": 36.8,
+          "respiratory_rate": 18,
+          "blood_pressure": {
+            "systolic": 112,
+            "diastolic": 84
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T01:30:00",
+          "spo2": 96,
+          "heart_rate": 67,
+          "temperature": 36.4,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 132,
+            "diastolic": 72
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T01:45:00",
+          "spo2": 99,
+          "heart_rate": 84,
+          "temperature": 36.2,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 115,
+            "diastolic": 84
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T02:00:00",
+          "spo2": 95,
+          "heart_rate": 82,
+          "temperature": 36.5,
+          "respiratory_rate": 18,
+          "blood_pressure": {
+            "systolic": 135,
+            "diastolic": 65
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T02:15:00",
+          "spo2": 97,
+          "heart_rate": 89,
+          "temperature": 36.2,
+          "respiratory_rate": 15,
+          "blood_pressure": {
+            "systolic": 110,
+            "diastolic": 85
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T02:30:00",
+          "spo2": 97,
+          "heart_rate": 86,
+          "temperature": 36.9,
+          "respiratory_rate": 15,
+          "blood_pressure": {
+            "systolic": 132,
+            "diastolic": 77
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T02:45:00",
+          "spo2": 95,
+          "heart_rate": 82,
+          "temperature": 36.6,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 121,
+            "diastolic": 75
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T03:00:00",
+          "spo2": 98,
+          "heart_rate": 60,
+          "temperature": 36.9,
+          "respiratory_rate": 14,
+          "blood_pressure": {
+            "systolic": 114,
+            "diastolic": 71
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T03:15:00",
+          "spo2": 98,
+          "heart_rate": 69,
+          "temperature": 36.8,
+          "respiratory_rate": 16,
+          "blood_pressure": {
+            "systolic": 125,
+            "diastolic": 68
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T03:30:00",
+          "spo2": 99,
+          "heart_rate": 80,
+          "temperature": 36.3,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 114,
+            "diastolic": 73
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T03:45:00",
+          "spo2": 97,
+          "heart_rate": 88,
+          "temperature": 36.5,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 110,
+            "diastolic": 83
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T04:00:00",
+          "spo2": 99,
+          "heart_rate": 89,
+          "temperature": 36.5,
+          "respiratory_rate": 18,
+          "blood_pressure": {
+            "systolic": 116,
+            "diastolic": 79
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T04:15:00",
+          "spo2": 95,
+          "heart_rate": 108,
+          "temperature": 39.7,
+          "respiratory_rate": 21,
+          "blood_pressure": {
+            "systolic": 99,
+            "diastolic": 69
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T04:30:00",
+          "spo2": 83,
+          "heart_rate": 108,
+          "temperature": 36.7,
+          "respiratory_rate": 26,
+          "blood_pressure": {
+            "systolic": 127,
+            "diastolic": 77
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T04:45:00",
+          "spo2": 95,
+          "heart_rate": 65,
+          "temperature": 36.3,
+          "respiratory_rate": 15,
+          "blood_pressure": {
+            "systolic": 127,
+            "diastolic": 77
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T05:00:00",
+          "spo2": 95,
+          "heart_rate": 67,
+          "temperature": 36.5,
+          "respiratory_rate": 18,
+          "blood_pressure": {
+            "systolic": 118,
+            "diastolic": 83
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T05:15:00",
+          "spo2": 95,
+          "heart_rate": 62,
+          "temperature": 36.3,
+          "respiratory_rate": 17,
+          "blood_pressure": {
+            "systolic": 120,
+            "diastolic": 77
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T05:30:00",
+          "spo2": 97,
+          "heart_rate": 64,
+          "temperature": 36.5,
+          "respiratory_rate": 18,
+          "blood_pressure": {
+            "systolic": 124,
+            "diastolic": 73
+          },
+          "source": "sensor"
+        },
+        {
+          "timestamp": "2026-02-24T05:45:00",
+          "spo2": 95,
+          "heart_rate": 61,
+          "temperature": 37.0,
+          "respiratory_rate": 18,
+          "blood_pressure": {
+            "systolic": 113,
+            "diastolic": 72
+          },
+          "source": "sensor"
+        }
+      ],
+      "audio_input": [
+        {
+          "timestamp": "2026-02-24T00:28:00",
+          "type": "cough",
+          "confidence": 0.932,
+          "count": 9
+        },
+        {
+          "timestamp": "2026-02-24T00:34:00",
+          "type": "stridor",
+          "confidence": 0.766
+        }
+      ],
+      "vision_input": [
+        {
+          "timestamp": "2026-02-24T00:49:00",
+          "type": "sitting_up",
+          "confidence": 0.798
+        },
+        {
+          "timestamp": "2026-02-24T00:59:00",
+          "type": "agitation",
+          "confidence": 0.767
+        },
+        {
+          "timestamp": "2026-02-24T03:09:00",
+          "type": "sitting_up",
+          "confidence": 0.822
+        }
+      ],
+      "patient_context": {
+        "name": "Jean Camara",
+        "age": 62,
+        "room": "500",
+        "conditions": [
+          "Insuffisance cardiaque",
+          "Diabète type 2"
+        ],
+        "risk_factors": [
+          "Diabète",
+          "Insuffisance cardiaque"
+        ]
+      }
+    },
+    "day_consultation": {
+      "patient_id": "DEMO001",
+      "patient_name": "Jean Camara",
+      "clinical_date": "2026-02-23",
+      "consultation_timestamp": "2026-02-23T10:00:00",
+      "consultation_mode": "cardio",
+      "symptoms_input": [
+        "Dyspnée d'effort",
+        "Douleur thoracique",
+        "Syncope",
+        "Palpitations"
+      ],
+      "day_vitals_input": {
+        "SpO2": "97%",
+        "FC": "75 bpm",
+        "T°": "36.4°C",
+        "PA": "124/67 mmHg"
+      },
+      "exam_input": {
+        "Auscultation cardiaque": "BDC réguliers, pas de souffle",
+        "Pouls périphériques": "Présents et symétriques",
+        "OMI": "Absents"
+      },
+      "patient_context": {
+        "name": "Jean Camara",
+        "age": 62,
+        "conditions": [
+          "Insuffisance cardiaque",
+          "Diabète type 2"
+        ],
+        "medications": [
+          "Metformine 500mg",
+          "Ramipril 5mg",
+          "Amlodipine 5mg",
+          "Bisoprolol 2.5mg",
+          "Insuline Lantus",
+          "Salbutamol inh."
+        ],
+        "allergies": [
+          "Pénicilline"
+        ]
+      },
+      "presenting_complaint": "Dyspnée d'effort"
+    }
+  },
+  "workflow_summary": {
+    "phase": "completed",
+    "guardrails_blocked": false,
+    "total_events_processed": 6,
+    "total_alerts": 6,
+    "guard_log": [
+      {
+        "node": "night",
+        "check": "input",
+        "status": "passed",
+        "detail": null,
+        "timestamp": "2026-02-23T19:28:21.877649"
+      },
+      {
+        "node": "night",
+        "check": "output",
+        "status": "skipped",
+        "detail": "deterministic_node_output_skip",
+        "timestamp": "2026-02-23T19:28:21.877649"
+      },
+      {
+        "node": "rap1",
+        "check": "input",
+        "status": "passed",
+        "detail": "no_text_input",
+        "timestamp": "2026-02-23T19:28:21.879650"
+      },
+      {
+        "node": "rap1",
+        "check": "output",
+        "status": "passed",
+        "detail": {
+          "reason": "bulk_flagged_non_explicit",
+          "violations": [
+            "POLICY_VIOLATION"
+          ]
+        },
+        "timestamp": "2026-02-23T19:29:27.846220"
+      },
+      {
+        "node": "day",
+        "check": "input",
+        "status": "skipped",
+        "detail": "trusted_internal_inputs",
+        "timestamp": "2026-02-23T19:29:27.848222"
+      },
+      {
+        "node": "day",
+        "check": "output",
+        "status": "skipped",
+        "detail": "deterministic_node_output_skip",
+        "timestamp": "2026-02-23T19:29:27.848222"
+      },
+      {
+        "node": "rap2",
+        "check": "input",
+        "status": "skipped",
+        "detail": "trusted_internal_inputs",
+        "timestamp": "2026-02-23T19:29:27.851294"
+      },
+      {
+        "node": "rap2",
+        "check": "output",
+        "status": "passed",
+        "detail": {
+          "reason": "bulk_flagged_non_explicit",
+          "violations": [
+            "POLICY_VIOLATION"
+          ]
+        },
+        "timestamp": "2026-02-23T19:30:34.564704"
+      }
+    ],
+    "rap1_title": "Rapport de Surveillance Nocturne",
+    "rap2_title": "Rapport de Consultation Médicale"
+  }
+}

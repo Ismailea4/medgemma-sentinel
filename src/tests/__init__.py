@@ -1,0 +1,2 @@
+# Tests package
+import pytest
