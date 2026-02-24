@@ -38,12 +38,13 @@ MedGemma Sentinel is a **Hierarchical Agent** managed by a State Machine:
 * **Runtime/UI:** Streamlit, llama.cpp, Ollama (local inference)
 * **Vision/Audio (Reflex):** HeAR, YamNet, Faster-Whisper
 
-## 💓 Night Cardiology Sentinel Apps
+## 💓 Medgemma Sentinel Apps
 
-Two Streamlit apps are available:
+Three Streamlit apps are available:
 
 - **Standalone Analyzer:** Upload vitals and run windowed clinical analysis.
 - **MCP Cardiology Agent:** Interactive ReAct loop with tool-calling and actionable instructions.
+- **Longitudinal Analysis:** Compare multiple patient reports over time and generate comprehensive clinical evolution reports.
 
 ### Features
 
@@ -54,7 +55,20 @@ Two Streamlit apps are available:
   - **Comparison:** Current data vs patient baseline
   - **Detection:** Identification of clinical anomalies
   - **Interpretation:** Short clinical assessment
+- **Longitudinal Analysis:**
+  - Compare multiple patient reports
+  - Track symptom/diagnosis evolution
+  - Generate PDF reports with clinical recommendations
 - **Flexible Model Loading:** Use local GGUF files or download from Hugging Face
+
+## 📚 Source Code Architecture
+
+For detailed information about the source code modules, see [src/README.md](src/README.md). This document describes:
+
+- **[mcp_architecture/](src/mcp_architecture/)** - Real-time ReAct-based clinical reasoning via Model Context Protocol
+- **[night_cardiology_sentinel/](src/night_cardiology_sentinel/)** - Lightweight vitals processing and windowing
+- **[reporting_model/](src/reporting_model/)** - Full orchestration, memory management, and report generation system
+- **[longitudinal_src/](src/longitudinal_src/)** - Multi-report clinical evolution analysis and trend detection
 
 ### Installation
 
@@ -102,8 +116,11 @@ Two Streamlit apps are available:
 
    # MCP cardiology agent
    streamlit run app_mcp_cardiology.py
+
+   # Longitudinal analysis
+   streamlit run app_longitudinal_analysis.py
    ```
-2. **In the web interface:**
+2. **Standalone Analyzer / MCP Agent:**
 
    - **Step 1:** Upload `subjects_info.json` (example: `data/processed/hr_adolescent/subjects_info.json`) or enter patient details manually
    - **Step 2:** Upload vitals text file (example: `data/processed/hr_adolescent/subject_903_hr.txt`)
@@ -112,9 +129,16 @@ Two Streamlit apps are available:
      - **Local:** `models/medgemma-night-sentinel-Q4_K_M.gguf`
      - **Hugging Face:** `Ismailea04/medgemma-night-sentinel`
    - **Step 5:** Click **"🚀 Run analysis"**
-3. **View results:**
+3. **Longitudinal Analysis:**
+
+   - **Step 1:** Upload 2 or more PDF reports
+   - **Step 2:** Configure optional local MedGemma model (if available)
+   - **Step 3:** Click **"🚀 Lancer l'Analyse"**
+   - **Step 4:** View results, visualizations, and download JSON/PDF reports
+4. **View results:**
 
    - Each window displays summary statistics and clinical analysis
+   - Longitudinal reports show evolution trends and clinical recommendations
    - Export results as needed
 
 ### Supported Vitals Formats
@@ -137,13 +161,30 @@ Time: 4s - HR: 70.15, PULSE: 68.50, RESP: 19.02, %SpO2: 98.01
 
 ```
 medgemma-sentinel/
-├── app_night_cardiology_sentinal.py    # Standalone analyzer
-├── app_mcp_cardiology.py               # MCP cardiology app
-├── src/
-│   └── night_cardiology_sentinel/
-│       ├── __init__.py
-│       ├── data_parser.py              # Vitals parsing & windowing
-│       └── inference.py                # Model inference
+├── README.md                           # Main documentation (you are here)
+├── src/                                # Source code modules (see src/README.md for details)
+│   ├── README.md                       # 📚 Architecture overview & module guide
+│   ├── mcp_architecture/               # 🧠 ReAct-based clinical reasoning
+│   │   ├── README.md                   # MCP tool orchestration details
+│   │   ├── medical_mcp_server.py
+│   │   ├── medical_mcp_client_2.py
+│   │   └── cardiology_sentinel.py
+│   ├── night_cardiology_sentinel/      # 💓 Vitals monitoring & windowing
+│   │   ├── README.md                   # Vitals parsing & inference details
+│   │   ├── data_parser.py
+│   │   └── inference.py
+│   ├── reporting_model/                # 🏥 Full clinical orchestration
+│   │   ├── README.md                   # Orchestration & memory system details
+│   │   ├── orchestration/              # LangGraph workflow
+│   │   ├── memory/                     # GraphRAG patient records
+│   │   ├── reporting/                  # PDF generation
+│   │   └── guardrails/                 # Safety checks
+│   └── longitudinal_src/               # 📊 Multi-report evolution analysis
+│       ├── README.md                   # Report extraction & evolution tracking
+│       └── longitudinal_analysis.py
+├── app_night_cardiology_sentinal.py    # Standalone vitals analyzer
+├── app_mcp_cardiology.py               # MCP cardiology agent with ReAct
+├── app_longitudinal_analysis.py        # Longitudinal report analysis
 ├── models/
 │   └── medgemma-night-sentinel-Q4_K_M.gguf
 ├── data/
@@ -156,6 +197,15 @@ medgemma-sentinel/
     ├── card_medgemma_sentinal.png
     └── workflow.png
 ```
+
+**📖 To understand each module in detail:**
+
+- Start with [src/README.md](src/README.md) for the big picture
+- Then explore each module's README:
+  - [src/mcp_architecture/README.md](src/mcp_architecture/README.md) - Tool-based reasoning
+  - [src/night_cardiology_sentinel/README.md](src/night_cardiology_sentinel/README.md) - Vitals processing
+  - [src/reporting_model/README.md](src/reporting_model/README.md) - Full orchestration
+  - [src/longitudinal_src/README.md](src/longitudinal_src/README.md) - Report evolution
 
 ### Example Use Case
 

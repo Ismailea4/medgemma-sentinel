@@ -1,30 +1,72 @@
-# Night Cardiology Sentinel - Requirements
-# Core dependencies for the Streamlit app
+# MedGemma Sentinel - Complete Requirements
+# ============================================
+# All dependencies for Night Cardiology Sentinel, MCP Architecture, and Longitudinal Analysis
 
-# Streamlit for web interface
+# ==================== WEB INTERFACE ====================
 streamlit>=1.31.0
 
-# Hugging Face for model downloads
+# ==================== HUGGING FACE & MODEL MANAGEMENT ====================
 huggingface-hub>=0.20.0
+transformers==4.51.0
+torch>=2.4.0
 
-# MCP + local inference
+# ==================== MCP & LOCAL INFERENCE ====================
 fastmcp
 ollama
 python-dotenv
+llama-cpp-python>=0.3.0
 
-# Audio processing
+# ==================== ORCHESTRATION & GRAPH ====================
+langgraph>=1.0.0
+langchain>=1.2.0
+langchain-community>=0.4.0
+networkx>=3.3
+
+# ==================== MEMORY & RAG ====================
+llama-index-core>=0.14.0
+llama-index-graph-stores-neo4j>=0.3.0
+llama-index-llms-huggingface>=0.3.0
+llama-index-embeddings-huggingface>=0.3.0
+
+# ==================== AUDIO PROCESSING ====================
 librosa
+pydub
 
-# Data processing
-numpy>=1.24.0
+# ==================== DATA PROCESSING ====================
+numpy>=2.0.0
+pandas>=2.2.0
 scikit-learn
 joblib
+pydantic>=2.8.0
+python-dateutil>=2.9.0
 
-# Note: llama-cpp-python requires C++ compiler to build from source
+# ==================== PDF GENERATION & REPORTING ====================
+reportlab>=4.4.0
+weasyprint>=62.0
+pdfplumber>=0.10.3
+
+# ==================== VISUALIZATION ====================
+matplotlib>=3.9.0
+plotly>=5.18.0
+
+# ==================== GUARDRAILS & SAFETY ====================
+nemoguardrails>=0.10.0
+
+# ==================== UTILITIES ====================
+jinja2>=3.1.0
+typing-extensions>=4.12.0
+cryptography>=41.0.0
+pyjwt>=2.8.0
+
+# ==================== TESTING ====================
+pytest>=8.3.0
+
+# ==================== NOTE ON llama-cpp-python ====================
+# llama-cpp-python requires C++ compiler to build from source
 # Install separately with one of these commands:
-# For CPU: pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
-# For CUDA (NVIDIA GPU): pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
-# For Metal (Apple Silicon): pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/metal
-
-# Optional: If using HTTP API instead of llama-cpp-python
-# requests>=2.31.0
+# For CPU:
+#   pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+# For CUDA (NVIDIA GPU):
+#   pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
+# For Metal (Apple Silicon):
+#   pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/metal
