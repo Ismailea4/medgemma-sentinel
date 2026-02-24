@@ -1,14 +1,8 @@
-<div align="center">
-  <img src="figures/logo2.png" alt="MedGemma Sentinel Logo" width="400"/>
-</div>
-
 # MedGemma Sentinel: The Autonomous Edge-AI Guardian 🏥🛡️
 
-<div align="center">
-  <img src="figures/card_medgemma_sentinal.png" alt="MedGemma Sentinel Card" width="700"/>
-</div>
+### adds-on : the project schema
 
-**MedGemma Sentinel** is a multimodal AI agent designed for offline rural clinics (e.g., the Atlas Mountains) to bridge the "Vigilance Gap" in healthcare. It operates on low-cost hardware and switches between two specialized roles to support medical staff 24/7.
+**MedGemma Sentinel** is a multimodal AI agent designed for offline rural clinics (e.g., the Atlas Mountains) to bridge the "Vigilance Gap" in healthcare.  It operates on low-cost hardware and switches between two specialized roles to support medical staff 24/7.
 
 ## 🌟 Key Features
 
@@ -18,10 +12,6 @@
 * **Longitudinal Memory:** Local patient timeline and report generation with GraphRAG.
 
 ## 🏗️ System Architecture
-
-<div align="center">
-  <img src="figures/workflow%20v3.png" alt="System Workflow"/>
-</div>
 
 MedGemma Sentinel is a **Hierarchical Agent** managed by a State Machine:
 
