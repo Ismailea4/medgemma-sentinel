@@ -1,0 +1,377 @@
+Below is a cardiology topic:
+
+Adolescent patient, 10 years old, Female. Height: 154.5 cm, Weight: 42.7 kg.
+
+Continuous heart rate monitoring over 1972.6 hours shows normal baseline resting heart rate of 91.0 bpm (±18.1 bpm). Heart rate range: 57 to 185 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 11 years old, Female. Height: 168.2 cm, Weight: 58.7 kg.
+
+Continuous heart rate monitoring over 1802.5 hours shows normal baseline resting heart rate of 84.0 bpm (±16.9 bpm). Heart rate range: 44 to 186 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 15 years old, Female. Height: 172.0 cm, Weight: 59.8 kg.
+
+Continuous heart rate monitoring over 2034.4 hours shows normal baseline resting heart rate of 85.1 bpm (±15.8 bpm). Heart rate range: 55 to 184 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 13 years old, Male. Height: 162.0 cm, Weight: 74.4 kg.
+
+Continuous heart rate monitoring over 1971.8 hours shows normal baseline resting heart rate of 92.7 bpm (±16.5 bpm). Heart rate range: 54 to 168 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 13 years old, Male. Height: 186.6 cm, Weight: 68.5 kg.
+
+Continuous heart rate monitoring over 1828.9 hours shows normal baseline resting heart rate of 74.1 bpm (±18.6 bpm). Heart rate range: 41 to 169 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 10 years old, Male. Height: 150.2 cm, Weight: 41.1 kg.
+
+Continuous heart rate monitoring over 1993.0 hours shows normal baseline resting heart rate of 85.2 bpm (±17.7 bpm). Heart rate range: 55 to 197 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 17 years old, Male. Height: 175.5 cm, Weight: 71.2 kg.
+
+Continuous heart rate monitoring over 1860.2 hours shows normal baseline resting heart rate of 76.3 bpm (±20.6 bpm). Heart rate range: 39 to 162 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 15 years old, Female. Height: 174.2 cm, Weight: 60.5 kg.
+
+Continuous heart rate monitoring over 2053.7 hours shows normal baseline resting heart rate of 69.3 bpm (±21.7 bpm). Heart rate range: 39 to 194 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 17 years old, Female. Height: 172.0 cm, Weight: 81.3 kg.
+
+Continuous heart rate monitoring over 2021.5 hours shows normal baseline resting heart rate of 88.9 bpm (±17.4 bpm). Heart rate range: 56 to 187 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 17 years old, Male. Height: 167.0 cm, Weight: 61.4 kg.
+
+Continuous heart rate monitoring over 1897.1 hours shows normal baseline resting heart rate of 83.8 bpm (±17.3 bpm). Heart rate range: 43 to 197 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 17 years old, Female. Height: 181.0 cm, Weight: 62.5 kg.
+
+Continuous heart rate monitoring over 2033.5 hours shows normal baseline resting heart rate of 75.4 bpm (±15.5 bpm). Heart rate range: 46 to 188 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 11 years old, Male. Height: 155.5 cm, Weight: 46.8 kg.
+
+Continuous heart rate monitoring over 1939.3 hours shows normal baseline resting heart rate of 89.0 bpm (±17.2 bpm). Heart rate range: 56 to 187 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 10 years old, Male. Height: 151.5 cm, Weight: 36.5 kg.
+
+Continuous heart rate monitoring over 1894.4 hours shows normal baseline resting heart rate of 71.7 bpm (±18.1 bpm). Heart rate range: 45 to 186 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 16 years old, Male. Height: 190.4 cm, Weight: 83.6 kg.
+
+Continuous heart rate monitoring over 1948.0 hours shows normal baseline resting heart rate of 74.4 bpm (±12.1 bpm). Heart rate range: 47 to 165 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 15 years old, Male. Height: 187.2 cm, Weight: 75.4 kg.
+
+Continuous heart rate monitoring over 2064.1 hours shows normal baseline resting heart rate of 74.2 bpm (±17.1 bpm). Heart rate range: 44 to 164 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 15 years old, Male. Height: 180.0 cm, Weight: 58.2 kg.
+
+Continuous heart rate monitoring over 1706.1 hours shows normal baseline resting heart rate of 75.6 bpm (±16.4 bpm). Heart rate range: 49 to 177 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 15 years old, Male. Height: 170.2 cm, Weight: 64.0 kg.
+
+Continuous heart rate monitoring over 1913.0 hours shows normal baseline resting heart rate of 76.4 bpm (±15.0 bpm). Heart rate range: 49 to 183 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 16 years old, Male. Height: 190.0 cm, Weight: 71.1 kg.
+
+Continuous heart rate monitoring over 2078.2 hours shows normal baseline resting heart rate of 75.1 bpm (±16.7 bpm). Heart rate range: 45 to 152 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 11 years old, Male. Height: 152.0 cm, Weight: 39.9 kg.
+
+Continuous heart rate monitoring over 1898.1 hours shows normal baseline resting heart rate of 82.4 bpm (±20.5 bpm). Heart rate range: 49 to 179 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 10 years old, Female. Height: 150.5 cm, Weight: 40.0 kg.
+
+Continuous heart rate monitoring over 1817.7 hours shows normal baseline resting heart rate of 87.7 bpm (±14.2 bpm). Heart rate range: 56 to 187 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 12 years old, Male. Height: 166.4 cm, Weight: 46.6 kg.
+
+Continuous heart rate monitoring over 1868.5 hours shows normal baseline resting heart rate of 69.3 bpm (±18.2 bpm). Heart rate range: 39 to 193 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 11 years old, Female. Height: 154.0 cm, Weight: 42.8 kg.
+
+Continuous heart rate monitoring over 1881.1 hours shows normal baseline resting heart rate of 77.6 bpm (±14.8 bpm). Heart rate range: 50 to 202 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 16 years old, Male. Height: 181.0 cm, Weight: 71.4 kg.
+
+Continuous heart rate monitoring over 1860.9 hours shows normal baseline resting heart rate of 80.4 bpm (±18.1 bpm). Heart rate range: 43 to 186 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adolescent patient, 12 years old, Male. Height: 154.6 cm, Weight: 40.8 kg.
+
+Continuous heart rate monitoring over 1858.0 hours shows normal baseline resting heart rate of 86.3 bpm (±16.6 bpm). Heart rate range: 56 to 195 bpm. HR variability is moderate, indicating adequate cardiac response to stimuli.
+
+Rhythm assessment: Regular sinus rhythm throughout monitoring period with no significant arrhythmias detected. No evidence of ectopic beats or conduction abnormalities. Cardiac rate response to daily activities appears appropriate for age.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adult icu patient, with complex cardiac monitoring.
+
+Continuous cardiac monitoring over 44.1 minutes. Mean heart rate 72.0 bpm (±9.6 bpm), range 54-119 bpm; pulse 70.1 bpm; respiration 20.3 /min; SpO2 96.5%.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 4 abnormality features documented. premature ventricular contractions (PVC) present (0.0%, 81 total), supraventricular premature beats (0.5%, 964 total), bigeminy detected (4.0%), trigeminy detected (12.0%). Patient demonstrates rhythm abnormalities requiring ongoing cardiac assessment and possible intervention.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adult icu patient, with complex cardiac monitoring.
+
+Continuous cardiac monitoring over 772.4 minutes. Mean heart rate 66.9 bpm (±11.7 bpm), range 43-105 bpm; pulse 63.6 bpm; respiration 26.5 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adult icu patient, with complex cardiac monitoring.
+
+Continuous cardiac monitoring over 44.0 minutes. Mean heart rate 96.2 bpm (±12.7 bpm), range 65-132 bpm; pulse 95.6 bpm; respiration 15.0 /min; SpO2 99.2%.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 3 abnormality features documented. premature ventricular contractions (PVC) present (0.0%, 51 total), supraventricular premature beats (0.0%, 45 total), bigeminy detected (4.0%). Patient demonstrates rhythm abnormalities requiring ongoing cardiac assessment and possible intervention.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adult icu patient, with complex cardiac monitoring.
+
+Continuous cardiac monitoring over 49.5 minutes. Mean heart rate 69.7 bpm (±10.0 bpm), range 54-96 bpm; pulse 69.4 bpm; respiration 11.8 /min; SpO2 97.4%.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adult icu patient, with complex cardiac monitoring.
+
+Continuous cardiac monitoring over 25.3 minutes. Mean heart rate 71.4 bpm (±6.8 bpm), range 57-105 bpm; pulse 70.4 bpm; respiration 15.6 /min; SpO2 97.1%.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 4 abnormality features documented. premature ventricular contractions (PVC) present (0.2%, 255 total), supraventricular premature beats (0.0%, 20 total), bigeminy detected (16.0%), trigeminy detected (8.0%). Patient demonstrates rhythm abnormalities requiring ongoing cardiac assessment and possible intervention.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adult icu patient, with complex cardiac monitoring.
+
+Continuous cardiac monitoring over 71.8 minutes. Mean heart rate 111.5 bpm (±10.6 bpm), range 82-147 bpm; pulse 110.4 bpm; respiration 23.9 /min; SpO2 99.2%.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 4 abnormality features documented. premature ventricular contractions (PVC) present (0.0%, 139 total), supraventricular premature beats (0.0%, 20 total), bigeminy detected (7.0%), trigeminy detected (6.0%). Patient demonstrates rhythm abnormalities requiring ongoing cardiac assessment and possible intervention.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Adult icu patient, with complex cardiac monitoring.
+
+Continuous cardiac monitoring over 23.3 minutes. Mean heart rate 85.1 bpm (±5.2 bpm), range 75-100 bpm; pulse 85.4 bpm; respiration 13.5 /min; SpO2 98.3%.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 2 abnormality features documented. premature ventricular contractions (PVC) present (0.0%, 8 total), supraventricular premature beats (0.0%, 4 total). Patient demonstrates rhythm abnormalities requiring ongoing cardiac assessment and possible intervention.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Pediatric icu patient, requiring continuous cardiac monitoring.
+
+Continuous cardiac monitoring over 1557.6 minutes. Mean heart rate 129.2 bpm (±19.5 bpm), range 0-211 bpm; pulse 127.9 bpm; respiration 37.7 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Pediatric icu patient, requiring continuous cardiac monitoring.
+
+Continuous cardiac monitoring over 703.6 minutes. Mean heart rate 158.9 bpm (±12.3 bpm), range 83-219 bpm; pulse 158.1 bpm; respiration 45.9 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Pediatric icu patient, requiring continuous cardiac monitoring.
+
+Continuous cardiac monitoring over 3022.8 minutes. Mean heart rate 130.7 bpm (±14.7 bpm), range 77-211 bpm; pulse 130.3 bpm; respiration 43.0 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Pediatric icu patient, requiring continuous cardiac monitoring.
+
+Continuous cardiac monitoring over 1607.0 minutes. Mean heart rate 123.8 bpm (±13.2 bpm), range 85-169 bpm; pulse 123.4 bpm; respiration 33.2 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Pediatric icu patient, requiring continuous cardiac monitoring.
+
+Continuous cardiac monitoring over 161.8 minutes. Mean heart rate 156.5 bpm (±13.5 bpm), range 0-200 bpm; pulse 156.6 bpm; respiration 51.3 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Pediatric icu patient, requiring continuous cardiac monitoring.
+
+Continuous cardiac monitoring over 3.0 minutes. Mean heart rate 127.1 bpm (±3.2 bpm), range 119-133 bpm; pulse 128.2 bpm; respiration 30.4 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.
+
+================================================================================
+
+Below is a cardiology topic:
+
+Pediatric icu patient, requiring continuous cardiac monitoring.
+
+Continuous cardiac monitoring over 1917.1 minutes. Mean heart rate 139.7 bpm (±22.2 bpm), range 54-203 bpm; pulse 133.0 bpm; respiration 45.1 /min.
+
+Cardiac rhythm analysis: Predominantly normal sinus rhythm with 0 abnormality features documented.Stable cardiac rhythm without significant arrhythmias. Cardiac rhythm remains stable with appropriate rate control.

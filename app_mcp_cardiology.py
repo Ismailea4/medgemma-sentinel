@@ -16,7 +16,7 @@ import streamlit as st
 from dotenv import load_dotenv
 
 # Add src directory to path - updated for root location
-src_path = Path(__file__).parent / "mcp_architecture" / "src"
+src_path = Path(__file__).parent / "src" / "mcp_architecture"
 if str(src_path) not in sys.path:
     sys.path.insert(0, str(src_path))
 
@@ -336,7 +336,7 @@ Be concise and clinical."""
     async def run_with_visualization(self, user_request: str, max_iterations=8):
         """Run ReAct loop with step-by-step visualization"""
         # Updated path for root location
-        mcp_server_path = str(Path(__file__).parent / "mcp_architecture" / "src" / "medical_mcp_server.py")
+        mcp_server_path = str(Path(__file__).parent / "src" / "mcp_architecture"  / "medical_mcp_server.py")
         
         server_params = StdioServerParameters(
             command=sys.executable,
