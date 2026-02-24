@@ -70,6 +70,21 @@ For detailed information about the source code modules, see [src/README.md](src/
 - **[reporting_model/](src/reporting_model/)** - Full orchestration, memory management, and report generation system
 - **[longitudinal_src/](src/longitudinal_src/)** - Multi-report clinical evolution analysis and trend detection
 
+## 🎬 Demos
+
+Comprehensive demo videos showcasing all system capabilities are available in [demos/README.md](demos/README.md):
+
+### Complete System Demonstrations
+- **Full Night-to-Day Workflow**: [MedGemma_Sentinel_Full_Demo.mov](demos/MedGemma_Sentinel_Full_Demo.mov) — End-to-end autonomous surveillance with critical event detection and AI-powered differential diagnosis
+- **MCP + Night Cardiology Sentinel**: [mcp_app.mp4](demos/mcp_app.mp4) — Standalone analyzer and MCP agent with dynamic tool selection for emergency alerts
+- **Longitudinal Patient Tracking**: [MedGemma Longitudinal Analysis.mp4](demos/MedGemma%20Longitudinal%20Analysis.mp4) — Multi-report comparison and clinical trend analysis
+- **Intelligent Medical Reporting**: [Demo_MedGemma_Reporting_Saâd.mp4](demos/Demo_MedGemma_Reporting_Sa%C3%A2d.mp4) — Cross-shift data synthesis with GraphRAG memory and guardrails
+
+### Generated Clinical Reports
+- **SBAR Critical Incident Report**: [RAP1_SBAR_Critical_Incident_Report.mp4](demos/reports/RAP1_SBAR_Critical_Incident_Report.mp4)
+- **Shift Handover Summary**: [Shift_Handover_Report.mp4](demos/reports/Shift_Handover_Report.mp4)
+- **RAP2 Differential Diagnosis**: [RAP2_Differential_Diagnosis_Report.mp4](demos/reports/RAP2_Differential_Diagnosis_Report.mp4)
+
 ### Installation
 
 1. **Create a virtual environment:**
