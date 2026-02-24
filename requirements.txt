@@ -1,6 +1,7 @@
 # MedGemma Sentinel - Complete Requirements
 # ============================================
-# All dependencies for Night Cardiology Sentinel, MCP Architecture, and Longitudinal Analysis
+# All dependencies for Night Cardiology Sentinel, MCP Architecture, 
+# Longitudinal Analysis, and Overall Report Generation
 
 # ==================== WEB INTERFACE ====================
 streamlit>=1.31.0

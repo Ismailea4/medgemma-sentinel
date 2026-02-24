@@ -38,28 +38,35 @@ MedGemma Sentinel is a **Hierarchical Agent** managed by a State Machine:
 * **Runtime/UI:** Streamlit, llama.cpp, Ollama (local inference)
 * **Vision/Audio (Reflex):** HeAR, YamNet, Faster-Whisper
 
-## 💓 Medgemma Sentinel Apps
+## 💓 MedGemma Sentinel Apps
 
-Three Streamlit apps are available:
+Four Streamlit apps are available:
 
-- **Standalone Analyzer:** Upload vitals and run windowed clinical analysis.
-- **MCP Cardiology Agent:** Interactive ReAct loop with tool-calling and actionable instructions.
-- **Longitudinal Analysis:** Compare multiple patient reports over time and generate comprehensive clinical evolution reports.
+- **Night Cardiology Sentinel:** Standalone vitals monitor with clinical analysis
+- **MCP Cardiology Agent:** Interactive ReAct loop with tool-calling for emergency alerts
+- **Longitudinal Analysis:** Compare multiple patient reports to track clinical evolution
+- **Overall Report Generation:** Full Night-to-Day workflow with unified intelligence (NEW)
 
 ### Features
 
 - **Patient Selection:** Upload patient demographics via JSON or enter manually
-- **Vitals Processing:** Parse heart rate and vital signs from text files (supports two formats)
+- **Vitals Processing:** Parse heart rate and vital signs from text files (multiple formats)
 - **Windowing Analysis:** Process data in 15-minute time windows or 10-row chunks
-- **Clinical Insights:** Generate structured clinical analysis with:
-  - **Comparison:** Current data vs patient baseline
-  - **Detection:** Identification of clinical anomalies
-  - **Interpretation:** Short clinical assessment
-- **Longitudinal Analysis:**
-  - Compare multiple patient reports
-  - Track symptom/diagnosis evolution
-  - Generate PDF reports with clinical recommendations
+- **Dual-Mode Dashboard:** 
+  - **Night Mode:** Autonomous surveillance with real-time vitals escalation and SBAR reports
+  - **Day Mode:** Doctor-assisted clinical assessment with RAP2 differential diagnosis
+- **Longitudinal Analysis:** Compare multiple patient reports and track symptom/diagnosis evolution
+- **Clinical Reports:** Generate professional PDF reports (SBAR, Handover, Differential)
 - **Flexible Model Loading:** Use local GGUF files or download from Hugging Face
+
+### Apps Quick Links
+
+| App | Purpose | Run Command |
+|-----|---------|-------------|
+| Night Cardiology | Real-time vitals monitoring | `streamlit run app_night_cardiology_sentinal.py` |
+| MCP Cardiology | ReAct agent with tools | `streamlit run app_mcp_cardiology.py` |
+| Longitudinal Analysis | Multi-report evolution | `streamlit run app_longitudinal_analysis.py` |
+| **Overall Report Generation** | **Night→Day full workflow (NEW)** | **`streamlit run app_overall_report_generation.py`** |
 
 ## 📚 Source Code Architecture
 
@@ -150,7 +157,14 @@ Comprehensive demo videos showcasing all system capabilities are available in [d
    - **Step 2:** Configure optional local MedGemma model (if available)
    - **Step 3:** Click **"🚀 Lancer l'Analyse"**
    - **Step 4:** View results, visualizations, and download JSON/PDF reports
-4. **View results:**
+4. **Overall Report Generation (NEW):**
+
+   - **Step 1:** Select or create patient profile (demographics, MRN)
+   - **Step 2 (Night Mode):** Enter/load vital signs, generate SBAR reports, trigger clinical escalations
+   - **Step 3 (Day Mode):** Review clinical events, assess with doctor interface, generate RAP2 differential diagnosis
+   - **Step 4:** Export comprehensive PDF reports (SBAR, Handover, Differential)
+   - See [src/overall_report_generation/README.md](src/overall_report_generation/README.md) for detailed module architecture and quick start
+5. **View results:**
 
    - Each window displays summary statistics and clinical analysis
    - Longitudinal reports show evolution trends and clinical recommendations

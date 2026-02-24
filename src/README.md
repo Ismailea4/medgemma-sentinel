@@ -73,6 +73,28 @@ Analyzes multiple patient reports over time to detect trends and generate evolut
 
 ---
 
+### 5. **overall_report_generation/** - Comprehensive Night/Day Surveillance
+Full-stack clinical surveillance with dual-mode dashboard, intelligent report generation, and clinical decision support.
+
+- **Core Components:**
+  - `orchestration/` - LangGraph state machines for Night/Day workflows
+  - `memory/` - Patient store, event management, and longitudinal memory
+  - `reporting/` - PDF generators (SBAR, Shift Handover, RAP2 Differential)
+  - `guardrails/` - Clinical safety validation and output steering
+  - `models/` - Pydantic models for Patient, Vitals, Events, Reports
+  - `ui/app.py` - Streamlit dashboard with Night/Day modes (moved to root as `app_overall_report_generation.py`)
+
+- **Key Features:**
+  - **Night Mode:** Autonomous vitals monitoring with auto-escalation and SBAR report generation
+  - **Day Mode:** Doctor-assisted clinical assessment with RAP2 differential diagnosis
+  - **Clinical Scoring:** NEWS2 calculation, reflex escalation rules, threshold alerts
+  - **Report Generation:** Professional PDFs with clinical plots and structured narratives
+  - **Smart Memory:** Event persistence and patient history tracking
+
+👉 **Details:** See [overall_report_generation/README.md](overall_report_generation/README.md)
+
+---
+
 ## 🔄 System Integration Flow
 
 ```
@@ -82,6 +104,7 @@ Analyzes multiple patient reports over time to detect trends and generate evolut
 │ app_night_cardiology_sentinal.py                        │
 │ app_mcp_cardiology.py                                   │
 │ app_longitudinal_analysis.py                            │
+│ app_overall_report_generation.py (NEW)                 │
 └──────────────┬──────────────────────────────────────────┘
                │
        ┌───────┴───────────────────────────┬──────────────┐
@@ -92,10 +115,19 @@ Analyzes multiple patient reports over time to detect trends and generate evolut
    │  Sentinel    │    │              │  │  │               │
    └──────────────┘    └──────────────┘  │  └───────────────┘
         │                    │           │         │
-        │                    │           │         │
-   ┌────▼────────────────────▼───────────▼─────────▼───┐
-   │         Reporting Model System                    │
-   ├──────────────────────────────────────────────────┤
+        └────────────┬───────┴───────────┼─────────┘
+                     │                   │
+              ┌──────▼──────────────────▼─────┐
+              │ Overall Report Generation    │
+              │ ┌──────────┐  ┌────────────┐ │
+              │ │Night Mode│  │ Day Mode   │ │
+              │ │  (Auto)  │  │ (Manual)   │ │
+              │ └──────────┘  └────────────┘ │
+              └──────────┬────────────────────┘
+                         │
+   ┌────────────────────▼───────────────────────┐
+   │    Reporting Model System (Shared)         │
+   ├──────────────────────────────────────────┤
    │ ┌──────────────┐  ┌──────────┐  ┌─────────────┐ │
    │ │Orchestration │  │ Memory   │  │  Reporting  │ │
    │ │(LangGraph)   │  │(GraphRAG)│  │(PDF/Report) │ │
@@ -111,6 +143,7 @@ Analyzes multiple patient reports over time to detect trends and generate evolut
 | **mcp_architecture** | fastmcp, ollama, python-dotenv | Interactive ReAct loops |
 | **reporting_model** | langgraph, llama-index, reportlab | Full clinical pipeline |
 | **longitudinal_src** | pdfplumber, plotly, reportlab | Report analysis & evolution tracking |
+| **overall_report_generation** | langgraph, llama-index, reportlab, weasyprint | Night/Day surveillance & reporting |
 
 ## 🚀 Getting Started
 
@@ -169,12 +202,96 @@ pip install -r ../requirements.txt  # Install consolidated deps
 streamlit run app_mcp_cardiology.py
 ```
 
+### For Overall Report Generation (Night/Day Surveillance)
+
+Comprehensive Night-to-Day workflow with unified AI-powered clinical intelligence, SBAR reporting, and RAP2 differential diagnosis:
+
+**Prerequisites:**
+- Python >= 3.10
+- System dependencies:
+  - **macOS:** `cairo`, `pango`, `gdk-pixbuf` (install via `brew install cairo pango gdk-pixbuf`)
+  - **Linux:** `libcairo2-dev`, `libpango`, `libpango-1.0-0`, `libpango-gobject-0` (install via `apt-get install`)
+  - **Windows:** GTK+ Runtime (if using weasyprint)
+
+**Installation:**
+```bash
+# Install module dependencies
+pip install -r overall_report_generation/requirements.txt
+
+# Install llama-cpp-python (choose one):
+# For CPU:
+pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+
+# For CUDA (NVIDIA GPU):
+pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
+
+# For Metal (Apple Silicon):
+pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/metal
+```
+
+**Model Setup (choose one):**
+
+Option 1 - Ollama (Recommended):
+```bash
+ollama pull amsaravi/medgemma-4b-it:q6
+# App will auto-connect to Ollama at localhost:11434
+```
+
+Option 2 - Local GGUF Model:
+```bash
+pip install -U "huggingface_hub[cli]"
+huggingface-cli download Ismailea04/medgemma-night-sentinel --local-dir ./models
+# Configure in app UI: models/medgemma-night-sentinel-Q4_K_M.gguf
+```
+
+**Environment Configuration (Optional):**
+
+If using Hugging Face model loader, create `.env` in the workspace root:
+```
+HF_TOKEN=your_hugging_face_token
+OLLAMA_BASE_URL=http://localhost:11434
+```
+
+**Running the App:**
+
+```bash
+streamlit run app_overall_report_generation.py
+```
+
+Then in the Streamlit UI:
+1. **Create/Select Patient:** Enter demographics or select existing patient profile
+2. **Night Mode:** 
+   - Input vital signs (HR, SpO2, respiratory rate)
+   - System auto-generates SBAR critical incident reports
+   - Automatic NEWS2 scoring and threshold escalations
+   - Save event logs to local persistent storage
+3. **Day Mode:**
+   - Review 24-hour event timeline
+   - Doctor-assisted clinical assessment
+   - Generate RAP2 differential diagnosis PDFs
+   - Export shift handover summaries
+
+**Architecture:**
+
+See [overall_report_generation/README.md](overall_report_generation/README.md) for:
+- **6 Core Modules:** orchestration, memory, reporting, guardrails, models, ui
+- **Data Flow Diagrams:** Night Mode and Day Mode workflows
+- **Demo Workflow:** 4-step end-to-end example
+- **Tech Stack:** Complete dependency documentation
+
+## For Full System
+```bash
+pip install -r ../requirements.txt  # Install consolidated deps
+streamlit run app_mcp_cardiology.py
+```
+
 ## 📖 Module Details
 
 - **[mcp_architecture/](mcp_architecture/)** - Real-time ReAct-based clinical reasoning
 - **[night_cardiology_sentinel/](night_cardiology_sentinel/)** - Lightweight vitals processing
 - **[reporting_model/](reporting_model/)** - Full orchestration & memory system
 - **[longitudinal_src/](longitudinal_src/)** - Multi-report evolution analysis
+- **[overall_report_generation/](overall_report_generation/)** - Comprehensive Night/Day clinical surveillance
 
 ---
 
