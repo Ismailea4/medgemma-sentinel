@@ -12,11 +12,10 @@
 
 ## 🌟 Key Features
 
-* **The Night Sentinel:** Autonomous monitoring for falls (YOLOv10), distress, and bio-acoustic anomalies like coughing or wheezing (YamNet).
-* **The Day Assistant:** Specialist diagnostic tool for imaging analysis (MedSigLIP) and automated doctor-patient consultation transcription (Faster-Whisper).
-* **Activation Steering:** Instantly shifts the model's "personality" from safety watchdog to medical specialist without fine-tuning.
-* **GraphRAG Integration:** Uses LlamaIndex and LangGraph to manage longitudinal patient history and answer complex clinical evolution questions.
-
+* **Night Cardiology Sentinel:** Continuous vitals monitoring with windowed analysis and structured clinical summaries.
+* **MCP Orchestration:** ReAct loop with tool use for cardiology analysis, patient history, and real-time context.
+* **Edge-Ready Inference:** GGUF + I-Matrix quantized MedGemma for low-memory, offline deployment.
+* **Longitudinal Memory:** Local patient timeline and report generation with GraphRAG.
 
 ## 🏗️ System Architecture
 
@@ -26,20 +25,25 @@
 
 MedGemma Sentinel is a **Hierarchical Agent** managed by a State Machine:
 
-1.  **Orchestration:** LangGraph manages the flow between the "Reflex Layer" (real-time sensing) and the "Cognitive Layer" (clinical reasoning).
-2.  **Inference Engine:** Google MedGemma 2 (4B) optimized via GGUF and I-Matrix Quantization to run on 8GB RAM.
-3.  **Memory:** A local, file-based storage system using GraphRAG to link daily reports and vital trends.
+1. **Reflex Layer:** Edge sensing (vision + audio) triggers safety alerts and sends events upstream.
+2. **Cognitive Layer:** MedGemma-based reasoning with ReAct tool orchestration via MCP.
+3. **Memory + Reporting:** GraphRAG links daily reports, vitals trends, and generates longitudinal summaries.
+4. **Clinical Delivery:** Actionable instructions and escalation criteria for the night nurse.
 
 ## 📋 Technical Stack
 
-* **LLM:** MedGemma 2 (4B)
-* **Vision:** YOLOv10-Nano (Reflex), MedSigLIP (Analytical)
-* **Audio:** YamNet (Event Detection), Faster-Whisper (ASR), HeAR
-* **Frameworks:** LangGraph, LlamaIndex, Streamlit, llama.cpp
+* **LLM:** MedGemma 2 (4B) in GGUF (I-Matrix quantized)
+* **Orchestration:** MCP, ReAct loop, LangGraph
+* **Memory:** LlamaIndex + GraphRAG
+* **Runtime/UI:** Streamlit, llama.cpp, Ollama (local inference)
+* **Vision/Audio (Reflex):** HeAR, YamNet, Faster-Whisper
 
-## 💓 Night Cardiology Sentinel App
+## 💓 Night Cardiology Sentinel Apps
 
-The **Night Cardiology Sentinel** is a specialized Streamlit application that monitors cardiac patients using continuous vitals data and the steered MedGemma model.
+Two Streamlit apps are available:
+
+- **Standalone Analyzer:** Upload vitals and run windowed clinical analysis.
+- **MCP Cardiology Agent:** Interactive ReAct loop with tool-calling and actionable instructions.
 
 ### Features
 
@@ -54,16 +58,36 @@ The **Night Cardiology Sentinel** is a specialized Streamlit application that mo
 
 ### Installation
 
-1. **Install dependencies:**
+1. **Create a virtual environment:**
+
+   ```bash
+   python -m venv .venv
+   ```
+2. **Install dependencies:**
+
    ```bash
    pip install -r requirements.txt
    ```
+3. **Install Ollama and pull the model:**
 
-2. **Optional: Install llama-cpp-python (if not already installed):**
+   ```bash
+   ollama pull amsaravi/medgemma-4b-it:q6
+   ```
+4. **Add your Hugging Face token:**
+
+   - Create a `.env` file in [src/mcp_architecture](src/mcp_architecture) using `.env.example` as a template.
+5. **Optional (edge device): Download the model locally:**
+
+   ```bash
+   pip install -U "huggingface_hub[cli]"
+   huggingface-cli download Ismailea04/medgemma-night-sentinel --local-dir ./models
+   ```
+6. **Optional: Install llama-cpp-python (if not already installed):**
+
    ```bash
    # For CPU
    pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
-   
+
    # For CUDA (if you have NVIDIA GPU)
    pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
    ```
@@ -71,11 +95,16 @@ The **Night Cardiology Sentinel** is a specialized Streamlit application that mo
 ### Usage
 
 1. **Start the app:**
-   ```bash
-   streamlit run app_night_cardiology_sentinal.py
-   ```
 
+   ```bash
+   # Standalone analyzer
+   streamlit run app_night_cardiology_sentinal.py
+
+   # MCP cardiology agent
+   streamlit run app_mcp_cardiology.py
+   ```
 2. **In the web interface:**
+
    - **Step 1:** Upload `subjects_info.json` (example: `data/processed/hr_adolescent/subjects_info.json`) or enter patient details manually
    - **Step 2:** Upload vitals text file (example: `data/processed/hr_adolescent/subject_903_hr.txt`)
    - **Step 3:** Choose windowing mode (15-minute or 10-row)
@@ -83,20 +112,22 @@ The **Night Cardiology Sentinel** is a specialized Streamlit application that mo
      - **Local:** `models/medgemma-night-sentinel-Q4_K_M.gguf`
      - **Hugging Face:** `Ismailea04/medgemma-night-sentinel`
    - **Step 5:** Click **"🚀 Run analysis"**
-
 3. **View results:**
+
    - Each window displays summary statistics and clinical analysis
    - Export results as needed
 
 ### Supported Vitals Formats
 
 **Format 1: Simple Heart Rate**
+
 ```
 Time: 00:00 - heart rate [#/min]: 64
 Time: 00:01 - heart rate [#/min]: 67
 ```
 
 **Format 2: Multi-parameter Key-Value**
+
 ```
 Time: 2s - HR: 69.92, PULSE: 68.02, RESP: 18.97, %SpO2: 97.92
 Time: 4s - HR: 70.15, PULSE: 68.50, RESP: 19.02, %SpO2: 98.01
@@ -106,7 +137,8 @@ Time: 4s - HR: 70.15, PULSE: 68.50, RESP: 19.02, %SpO2: 98.01
 
 ```
 medgemma-sentinel/
-├── app_night_cardiology_sentinal.py    # Main Streamlit app
+├── app_night_cardiology_sentinal.py    # Standalone analyzer
+├── app_mcp_cardiology.py               # MCP cardiology app
 ├── src/
 │   └── night_cardiology_sentinel/
 │       ├── __init__.py
@@ -144,6 +176,7 @@ medgemma-sentinel/
 * **Audio:** Youssra — Event detection and speech-to-text.
 * **Vision & UI:** Saad/Othman — Fall detection and Streamlit dashboard.
 * **Memory & Scribe:** Saad/Othman — LangGraph orchestration and PDF reporting.
+
 ## 🚀 Deployment
 
 Designed for the **Kaggle MedGemma Impact Challenge**. Deadline: February 24, 2026.

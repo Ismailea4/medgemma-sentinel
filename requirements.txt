@@ -7,8 +7,18 @@ streamlit>=1.31.0
 # Hugging Face for model downloads
 huggingface-hub>=0.20.0
 
+# MCP + local inference
+fastmcp
+ollama
+python-dotenv
+
+# Audio processing
+librosa
+
 # Data processing
 numpy>=1.24.0
+scikit-learn
+joblib
 
 # Note: llama-cpp-python requires C++ compiler to build from source
 # Install separately with one of these commands:
