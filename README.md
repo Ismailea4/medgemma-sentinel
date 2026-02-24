@@ -20,7 +20,7 @@
 ## 🏗️ System Architecture
 
 <div align="center">
-  <img src="figures/workflow%20v3.png" alt="System Workflow"/>
+  <img src="figures/workflow%20v4.png" alt="System Workflow"/>
 </div>
 
 MedGemma Sentinel is a **Hierarchical Agent** managed by a State Machine:
