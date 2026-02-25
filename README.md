@@ -8,6 +8,8 @@
   <img src="figures/card_medgemma_sentinal.png" alt="MedGemma Sentinel Card" width="700"/>
 </div>
 
+[Watch the demo on YouTube](https://youtu.be/JIUVgeabgMs)
+
 **MedGemma Sentinel** is a multimodal AI agent designed for offline rural clinics (e.g., the Atlas Mountains) to bridge the "Vigilance Gap" in healthcare. It operates on low-cost hardware and switches between two specialized roles to support medical staff 24/7.
 
 ## 🌟 Key Features
