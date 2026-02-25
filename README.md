@@ -2,11 +2,11 @@
   <img src="figures/logo2.png" alt="MedGemma Sentinel Logo" width="400"/>
 </div>
 
+## 🎥 Watch the Demo
+
+[![Watch the Demo](https://img.youtube.com/vi/JIUVgeabgMs/maxresdefault.jpg)](https://youtu.be/JIUVgeabgMs)
+
 # MedGemma Sentinel: The Autonomous Edge-AI Guardian 🏥🛡️
-
-## 🎥 Demo
-
-[![Watch the Demo](https://img.youtube.com/vi/JIUVgeabgMs/0.jpg)](https://youtu.be/JIUVgeabgMs)
 
 
 <div align="center">
